@@ -34,11 +34,12 @@ Completion claims should be evidence-based. A final summary should state what ch
 
 1. Read `AGENTS.md`.
 2. Read `PROJECT_STATE.md`.
-3. If the task is complex or ambiguous, create a requirements spec using `templates/requirements-spec.md`.
-4. Create an execution plan using `templates/execution-plan.md`.
-5. Wait for plan approval before implementation when the task is nontrivial.
-6. Save logs, reviews, and checkpoints under `quality_reports/` as appropriate.
-7. Update `PROJECT_STATE.md` before handoff.
+3. Establish the new-project basics before substantive research work: research objective, project type, data access class and storage/location convention, software/runtime expectations, reproducibility target, intended output registry or output-location convention, collaboration rules if relevant, and known constraints.
+4. If the task is complex or ambiguous, create a requirements spec using `templates/requirements-spec.md`.
+5. Create an execution plan using `templates/execution-plan.md`.
+6. Wait for plan approval before implementation when the task is nontrivial.
+7. Save logs, reviews, and checkpoints under `quality_reports/` as appropriate.
+8. Update `PROJECT_STATE.md` before handoff.
 
 ## Future Skills
 

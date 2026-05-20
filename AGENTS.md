@@ -42,6 +42,7 @@ For nontrivial work, agents should consult the relevant protocol files in `workf
 
 - Before creating a plan, read `workflow/PLAN_PROTOCOL.md`.
 - Before implementing an approved plan, read `workflow/ORCHESTRATOR_PROTOCOL.md`.
+- Before working with data, logs, credentials, sensitive materials, or durable reports, read `workflow/DATA_GOVERNANCE.md`.
 - Before claiming completion, read `workflow/VERIFICATION_PROTOCOL.md` and `workflow/QUALITY_GATES.md`.
 - When a substantial review is requested or appropriate, read `workflow/REVIEW_PROTOCOL.md`.
 - Before handoff or session close, read `workflow/MEMORY_AND_LOGGING.md`.

@@ -24,6 +24,8 @@ Use `templates/requirements-spec.md` as the starting point.
 
 A good execution plan should state:
 
+- Status.
+- Date created.
 - Objective.
 - Scope and non-scope.
 - Relevant files, data, artifacts, or outputs.
@@ -32,10 +34,24 @@ A good execution plan should state:
 - Review steps.
 - Risks and assumptions.
 - Acceptance criteria.
+- Approval status, approval date, and approver for nontrivial plans.
+- Amendments or deviations from the approved plan.
 - Handoff notes.
 
 Use `templates/execution-plan.md` as the starting point.
 
+## Plan Status
+
+Use simple plan statuses:
+
+- `Draft`: proposed but not approved.
+- `Approved`: accepted as the implementation reference.
+- `In Progress`: implementation has started.
+- `Superseded`: replaced by a newer plan.
+- `Completed`: implemented, verified, reviewed as required, and summarized.
+
+`PROJECT_STATE.md` should link the active approved plan and record its current status when substantial work is underway.
+
 ## Approval
 
-Do not implement a nontrivial plan until it is approved by the user or project owner. Once approved, preserve the plan as the reference for implementation and verification.
+Do not implement a nontrivial plan until it is approved by the user or project owner. Approval may be recorded from a user message, but the plan or session log should capture who approved it, when it was approved, and any later accepted deviations. Once approved, preserve the plan as the reference for implementation and verification.

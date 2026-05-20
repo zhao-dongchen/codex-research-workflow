@@ -20,6 +20,14 @@ Record blockers or decisions needed.
 
 Summarize what has been verified and what remains unverified.
 
+## Reproducibility Status
+
+Summarize environment, data snapshot, command, configuration, output, and known non-reproducible-step evidence.
+
+## Output Freshness
+
+State whether substantive outputs are freshness-verified. If not rebuilt or checked, write `not freshness-verified`.
+
 ## Next Action
 
 State the recommended next step.

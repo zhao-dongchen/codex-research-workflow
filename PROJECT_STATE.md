@@ -8,7 +8,9 @@ Maintain a Codex-native academic research workflow scaffold.
 
 ## Active Plan
 
-No active implementation plan is currently in progress.
+- Path: none.
+- Status: none.
+- Approval: none.
 
 ## Recent Decisions
 
@@ -19,6 +21,7 @@ No active implementation plan is currently in progress.
 - Generic project-scoped agents are read-only by default.
 - The initial scaffold was created and verified on 2026-05-20.
 - A follow-up audit on 2026-05-20 restored the required constitution filename from `AGENTS.txt` to `AGENTS.md`.
+- A scaffold-hardening pass on 2026-05-20 added `workflow/DATA_GOVERNANCE.md`, strengthened reproducibility and output-freshness requirements, strengthened plan approval governance, and added `.gitignore` while removing `.DS_Store`, `.codex/.DS_Store`, and `.Rhistory` from Git tracking.
 
 ## Open Questions
 
@@ -39,6 +42,14 @@ Initial scaffold verification passed on 2026-05-20:
 - Custom agent TOML files parse and include `sandbox_mode = "read-only"`.
 - `.agents/skills/` contains only placeholder documentation.
 - Follow-up audit confirmed `AGENTS.md` exists and no `AGENTS.txt` remains.
+
+Scaffold-hardening verification passed on 2026-05-20:
+
+- `workflow/DATA_GOVERNANCE.md` exists and is linked from `AGENTS.md`.
+- Reproducibility and output-freshness requirements are present in the verification protocol, quality gates, and templates.
+- Plan approval governance is reflected in the plan protocol, execution-plan template, and active-plan state fields.
+- `.gitignore` ignores `.DS_Store`, nested `.DS_Store`, and `.Rhistory`.
+- `.DS_Store`, `.codex/.DS_Store`, and `.Rhistory` were removed from Git tracking while remaining ignored local files.
 
 ## Next Recommended Action
 

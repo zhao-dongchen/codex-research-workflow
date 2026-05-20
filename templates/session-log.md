@@ -8,6 +8,10 @@ Describe the task for this session.
 
 Link or name the approved plan, if any.
 
+## Plan Status And Deviations
+
+Record whether the plan was draft, approved, in progress, completed, superseded, or deviated from. Note accepted deviations.
+
 ## Actions Taken
 
 Summarize the work performed.
@@ -15,6 +19,20 @@ Summarize the work performed.
 ## Evidence Collected
 
 List commands, checks, inspections, outputs, or other verification evidence.
+
+## Reproducibility Evidence
+
+- Software/runtime versions:
+- Package/library/toolbox versions:
+- Data snapshots or identifiers:
+- Seeds/configs:
+- Exact execution commands:
+- Generated output paths:
+- Known non-reproducible steps:
+
+## Output Freshness
+
+State whether tables, figures, derived datasets, and reported results are freshness-verified. If not rebuilt or checked, write `not freshness-verified`.
 
 ## Issues Found
 

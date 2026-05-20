@@ -16,6 +16,14 @@ List the expected files, analyses, models, figures, tables, notes, or other arti
 
 List relevant data, code, papers, prior outputs, or user-provided materials.
 
+## Data Governance
+
+Record data access class, safe data references, and any restrictions on what may be committed or logged.
+
+## Reproducibility Expectations
+
+State expected software/runtime requirements, data snapshot or version needs, seeds/configs, and reproduction target.
+
 ## Assumptions
 
 Record assumptions that affect interpretation or implementation.
