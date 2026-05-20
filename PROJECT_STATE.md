@@ -17,7 +17,7 @@ Maintain a Codex-native academic research workflow scaffold.
 - The scaffold uses Codex-native files and conventions rather than Claude-specific files.
 - The initial scaffold is infrastructure only.
 - `stata-data-analysis` is the first substantive empirical-analysis skill included in the scaffold.
-- Future MATLAB model-coding support should be added later as a skill.
+- `matlab-quantitative-modeling` is the first substantive quantitative-modeling skill included in the scaffold.
 - Generic project-scoped agents are read-only by default.
 - The initial scaffold was created and verified on 2026-05-20.
 - A follow-up audit on 2026-05-20 restored the required constitution filename from `AGENTS.txt` to `AGENTS.md`.
@@ -25,6 +25,7 @@ Maintain a Codex-native academic research workflow scaffold.
 - An Existing Project Onboarding layer was added on 2026-05-20 to guide inspection, inference, and approved creation or reconciliation of project-specific orientation artifacts for pre-existing research repositories.
 - A focused non-public workflow upgrade on 2026-05-20 clarified the two existing-project onboarding scenarios in `README.md`, corrected the `AGENTS.md` onboarding-report inventory, added the first real workflow skill (`research-project-onboarding`), clarified that the skill is conceptually cross-project and may later be installed at user scope, and updated onboarding prompts to operationalize the skill and request subagent support when available.
 - A Stata empirical data-analysis skill (`stata-data-analysis`) was added on 2026-05-20 as the first substantive empirical-analysis skill, covering data reconnaissance, missingness and unit diagnosis, sample construction, exploratory and goal-directed analysis, merge discipline, readable Stata code, outputs, and Stata pipeline review.
+- A MATLAB quantitative-modeling skill (`matlab-quantitative-modeling`) was added on 2026-05-20 as the first substantive quantitative-modeling skill, covering model-code reconnaissance, numerical implementation, distribution/simulation/moments, calibration/estimation/optimization, nonstandard numerical structures, generated-code caution, readable MATLAB code, efficiency, and MATLAB model-code review.
 
 ## Open Questions
 
@@ -78,6 +79,14 @@ Stata empirical data-analysis skill verification passed on 2026-05-20:
 - The skill directory contains only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
 - The skill covers data reconnaissance, variable/unit/missingness diagnosis, sample construction, exploratory and goal-directed analysis, and Stata code review/pipeline audit.
 - The skill includes external-data handling, merge diagnosis, missingness diagnosis, unit and scale checks, human-readable Stata code standards, table/figure/output standards, explicit boundaries, and optional subagent guidance.
+- `README.md` and `.agents/skills/README.md` mention the new skill with minimal documentation changes.
+
+MATLAB quantitative-modeling skill verification passed on 2026-05-20:
+
+- `.agents/skills/matlab-quantitative-modeling/SKILL.md` exists with valid `name` and `description` front matter.
+- The skill directory contains only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
+- The skill covers model-code reconnaissance, numerical implementation and revision, distribution/simulation/moments, calibration/estimation/optimization, nonstandard numerical structure awareness, and MATLAB code review/readability/performance audit.
+- The skill includes a dedicated efficiency and memory discipline section, human-readable quantitative code standards, generated-code/toolchain caution, explicit boundaries, and optional available-agent guidance.
 - `README.md` and `.agents/skills/README.md` mention the new skill with minimal documentation changes.
 
 ## Next Recommended Action

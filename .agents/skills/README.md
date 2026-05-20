@@ -8,10 +8,6 @@ User-level reusable skills should be installed under the user's global skills di
 
 `stata-data-analysis` is the canonical source implementation of a reusable cross-project empirical-analysis skill for Stata-based research workflows. It is suitable for later user-level installation when Stata empirical support is needed across unrelated projects.
 
-Potential future skills may include:
-
-- MATLAB quantitative-model coding workflows.
-
-Future MATLAB skills may be reusable user-level skills or project-specific skills depending on their scope.
+`matlab-quantitative-modeling` is the canonical source implementation of a reusable cross-project quantitative-modeling skill for MATLAB-based economic modeling workflows. It is suitable for later local installation in relevant projects.
 
 Add skills only when the project has a clear recurring need. Keep each skill narrow, documented, and testable.

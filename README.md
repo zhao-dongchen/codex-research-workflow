@@ -2,7 +2,7 @@
 
 This repository is a Codex-native scaffold for academic research workflows. It gives future research projects a reusable structure for planning, implementation, verification, review, and handoff.
 
-It is inspired by plan-first academic AI workflows, but it uses Codex-oriented conventions instead of Claude-specific project files. It is intentionally generic: no MATLAB, R, LaTeX, Quarto, journal, or data-source assumptions are built in.
+It is inspired by plan-first academic AI workflows, but it uses Codex-oriented conventions instead of Claude-specific project files. It is intentionally generic: no R, LaTeX, Quarto, journal, or data-source assumptions are built in.
 
 ## What This Scaffold Provides
 
@@ -13,7 +13,7 @@ It is inspired by plan-first academic AI workflows, but it uses Codex-oriented c
 - `quality_reports/`: checked-in folders for saved specs, plans, logs, reviews, checkpoints, and onboarding reports.
 - `.codex/config.toml`: minimal project-level Codex agent settings.
 - `.codex/agents/`: generic read-only project agents for exploration, review, and verification.
-- `.agents/skills/`: project skills, including reusable workflow skills and the Stata empirical data-analysis skill.
+- `.agents/skills/`: project skills, including reusable workflow skills, Stata empirical data analysis, and MATLAB quantitative modeling.
 
 ## Core Workflow
 
@@ -114,8 +114,7 @@ Reusable skills may be added under `.agents/skills/` when a project has a recurr
 
 - `research-project-onboarding`: existing-project onboarding and scaffold integration.
 - `stata-data-analysis`: Stata-based empirical data-analysis workflows.
-
-Future MATLAB quantitative-model skills may be added later.
+- `matlab-quantitative-modeling`: MATLAB-based quantitative economic modeling workflows.
 
 ## Copying This Scaffold
 
