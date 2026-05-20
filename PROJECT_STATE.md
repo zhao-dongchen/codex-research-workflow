@@ -26,6 +26,7 @@ Maintain a Codex-native academic research workflow scaffold.
 - A focused non-public workflow upgrade on 2026-05-20 clarified the two existing-project onboarding scenarios in `README.md`, corrected the `AGENTS.md` onboarding-report inventory, added the first real workflow skill (`research-project-onboarding`), clarified that the skill is conceptually cross-project and may later be installed at user scope, and updated onboarding prompts to operationalize the skill and request subagent support when available.
 - A Stata empirical data-analysis skill (`stata-data-analysis`) was added on 2026-05-20 as the first substantive empirical-analysis skill, covering data reconnaissance, missingness and unit diagnosis, sample construction, exploratory and goal-directed analysis, merge discipline, readable Stata code, outputs, and Stata pipeline review.
 - A MATLAB quantitative-modeling skill (`matlab-quantitative-modeling`) was added on 2026-05-20 as the first substantive quantitative-modeling skill, covering model-code reconnaissance, numerical implementation, distribution/simulation/moments, calibration/estimation/optimization, nonstandard numerical structures, generated-code caution, readable MATLAB code, efficiency, and MATLAB model-code review.
+- `stata-data-analysis` and `matlab-quantitative-modeling` are currently broad v0.1 workflow skills. A later refactor may split them into narrower Pedro-style producer/reviewer skills, such as `review-stata`, `matlab-model-implementation`, and `review-matlab-model`.
 
 ## Open Questions
 
