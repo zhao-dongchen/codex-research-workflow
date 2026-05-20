@@ -2,7 +2,7 @@
 
 This repository is a Codex-native scaffold for academic research workflows. It gives future research projects a reusable structure for planning, implementation, verification, review, and handoff.
 
-It is inspired by plan-first academic AI workflows, but it uses Codex-oriented conventions instead of Claude-specific project files. It is intentionally generic: no Stata, MATLAB, R, LaTeX, Quarto, journal, or data-source assumptions are built in yet.
+It is inspired by plan-first academic AI workflows, but it uses Codex-oriented conventions instead of Claude-specific project files. It is intentionally generic: no MATLAB, R, LaTeX, Quarto, journal, or data-source assumptions are built in.
 
 ## What This Scaffold Provides
 
@@ -13,7 +13,7 @@ It is inspired by plan-first academic AI workflows, but it uses Codex-oriented c
 - `quality_reports/`: checked-in folders for saved specs, plans, logs, reviews, checkpoints, and onboarding reports.
 - `.codex/config.toml`: minimal project-level Codex agent settings.
 - `.codex/agents/`: generic read-only project agents for exploration, review, and verification.
-- `.agents/skills/`: project skills, including reusable workflow skills and future domain-specific skills.
+- `.agents/skills/`: project skills, including reusable workflow skills and the Stata empirical data-analysis skill.
 
 ## Core Workflow
 
@@ -108,14 +108,14 @@ Short refresh prompt for an already onboarded project:
 Please refresh this project's onboarding state. Use $research-project-onboarding if it is available. Inspect the current repository structure, project profile, project state, agent guidance, and recent outputs without editing files. Identify what changed, what appears stale, and what needs user confirmation. Propose updates to AGENTS.md, PROJECT_PROFILE.md, and PROJECT_STATE.md, but do not edit anything until I approve.
 ```
 
-## Future Skills
+## Skills
 
-Future domain-specific skills may be added under `.agents/skills/` when a project has a recurring need. Planned examples include:
+Reusable skills may be added under `.agents/skills/` when a project has a recurring need. Current skills include:
 
-- Stata empirical-analysis workflows.
-- MATLAB quantitative-model coding workflows.
+- `research-project-onboarding`: existing-project onboarding and scaffold integration.
+- `stata-data-analysis`: Stata-based empirical data-analysis workflows.
 
-Those skills are intentionally not included in this initial scaffold.
+Future MATLAB quantitative-model skills may be added later.
 
 ## Copying This Scaffold
 
