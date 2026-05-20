@@ -72,10 +72,13 @@ Before scoring or finalization:
 
 Before finalization for substantial research-code or research-output tasks:
 
-- `workflow/QUALITY_SCORE_PROTOCOL.md` has been applied.
-- The relevant score threshold is met, or the user has explicitly accepted the residual risk: `80` minimum usable internal output, `90` strong research draft output, `95` excellence.
-- Any below-threshold override is recorded with the reason and unresolved risks.
-- The score is presented as a workflow checkpoint, not proof of correctness and not a substitute for verification or independent review.
+- Apply `workflow/QUALITY_SCORE_PROTOCOL.md`.
+- Meet the relevant threshold or record an explicit user override: `80` minimum usable internal output, `90` strong research draft output, `95` excellence.
+- Record blockers, caps, residual risks, and any below-threshold override.
+- Cite evidence from files, logs, outputs, commands, or review notes.
+- Treat the score as a workflow checkpoint, not proof of correctness.
+- Do not use the score as a substitute for verification or independent review.
+- Do not use review as a substitute for execution evidence.
 
 ## Handoff Gate
 

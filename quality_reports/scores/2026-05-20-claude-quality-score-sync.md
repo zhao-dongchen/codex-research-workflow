@@ -1,5 +1,7 @@
 # Quality Score Report
 
+Status: superseded by `quality_reports/scores/2026-05-20-final-structural-hardening.md` for final parseability, score-gate, and stale-reference checks. This report remains useful historical evidence for the Claude quality-score synchronization pass, but its final consistency claim should be read together with the superseding report.
+
 ## Task Summary
 
 Implemented the structural cleanup pass that adapts the upstream Claude quality-gate model into this Codex research workflow scaffold. This was a documentation and scaffold-structure task, not a Stata or MATLAB execution task.

@@ -63,13 +63,14 @@ Subagents should only be claimed when actually used.
 - Verification before completion claims.
 - Independent review for substantial work when requested or runtime-authorized.
 - Quality scoring for full workflow mode and substantial research-code or research-output tasks.
+- In full workflow mode, SCORE is required before SUMMARIZE.
 - Score thresholds from `workflow/QUALITY_SCORE_PROTOCOL.md`:
   - `<70`: do not present as complete.
   - `70-79`: partial; needs user review.
   - `80-89`: usable internal research output.
   - `90-94`: strong research draft output.
   - `95+`: polished, low-risk output.
-- Score does not replace verification or review; direct manual actions can bypass the score system.
+- Score does not replace verification or review. Review does not replace execution evidence. Direct manual actions can bypass the score system.
 
 ## Open Issues / Next Actions
 
@@ -88,3 +89,4 @@ Subagents should only be claimed when actually used.
 - `stata-data-analysis` is producer-oriented; independent review belongs to `review-stata`, `stata_reviewer`, `review-matlab-model`, `critical_reviewer`, and `verifier` as appropriate.
 - Historical scaffold-hardening details were moved to `quality_reports/session_logs/scaffold-hardening-log.md`.
 - Current cleanup score report: `quality_reports/scores/2026-05-20-claude-quality-score-sync.md` with score `93`.
+- Final structural hardening score report: `quality_reports/scores/2026-05-20-final-structural-hardening.md` with score `94`.

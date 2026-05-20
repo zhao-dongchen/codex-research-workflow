@@ -55,4 +55,19 @@ Record enough detail for another agent or researcher to resume work:
 - What quality score or threshold decision applied, when relevant.
 - What remains unresolved.
 
+## Score Reports
+
+Score reports should record enough evidence for a future agent or human to understand the threshold decision:
+
+- checked files
+- regenerated outputs and freshness status
+- verification evidence
+- review evidence
+- blockers and caps
+- remaining risks
+- final score and threshold interpretation
+- override decision, if any
+
+Do not use score reports as a substitute for reproducible code, logs, outputs, or independent review evidence.
+
 Do not use logs as a substitute for clear code, reproducible scripts, or well-named outputs.
