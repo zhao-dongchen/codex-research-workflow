@@ -57,7 +57,7 @@ If this scaffold has been copied into a pre-existing research project and projec
 
 `PROJECT_STATE.md` is the checked-in handoff file. Read it before starting substantial work and update it before ending substantial work.
 
-Use `PROJECT_STATE.md` for current status, active decisions, risks, and next actions. Use `quality_reports/` for detailed evidence, logs, specs, plans, reviews, and checkpoints.
+Use `PROJECT_STATE.md` for current status, active decisions, risks, and next actions. Use `quality_reports/` for detailed evidence, logs, specs, plans, reviews, checkpoints, and onboarding reports.
 
 ## Subagents
 

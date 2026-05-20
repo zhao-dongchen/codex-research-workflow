@@ -13,7 +13,7 @@ It is inspired by plan-first academic AI workflows, but it uses Codex-oriented c
 - `quality_reports/`: checked-in folders for saved specs, plans, logs, reviews, checkpoints, and onboarding reports.
 - `.codex/config.toml`: minimal project-level Codex agent settings.
 - `.codex/agents/`: generic read-only project agents for exploration, review, and verification.
-- `.agents/skills/`: placeholder location for future domain-specific skills.
+- `.agents/skills/`: project skills, including reusable workflow skills and future domain-specific skills.
 
 ## Core Workflow
 
@@ -52,14 +52,22 @@ The goal is to create or reconcile:
 - An initial or updated `PROJECT_STATE.md`.
 - A record of what is evidence-backed, inferred, assumed, user-confirmed, or unresolved.
 
-If the existing project already has `AGENTS.md`, `PROJECT_STATE.md`, `README.md`, `PROJECT_PROFILE.md`, or similar documentation, Codex should inspect those files and propose a merge, targeted revision, or reconciliation strategy. It should not overwrite existing guidance silently.
+### Case A: The Scaffold Is Already Present
 
-Copy-paste prompt for first onboarding:
+Use this path when the target project already contains this workflow scaffold, including files and folders such as `AGENTS.md`, `PROJECT_STATE.md`, `workflow/`, `templates/`, `quality_reports/`, and `.codex/`.
+
+In this case, keep the existing onboarding logic. Codex should run the onboarding workflow to inspect the project and generate or reconcile project-specific `AGENTS.md`, `PROJECT_PROFILE.md`, and `PROJECT_STATE.md` content. If the project already has `AGENTS.md`, `PROJECT_STATE.md`, `README.md`, `PROJECT_PROFILE.md`, or similar documentation, Codex should inspect those files and propose a merge, targeted revision, or reconciliation strategy. It should not overwrite existing guidance silently.
+
+Copy-paste prompt for first onboarding when the scaffold is already present:
 
 ```text
 Please onboard this existing academic research project using the repository workflow.
 
+Use $research-project-onboarding if it is available.
+
 First, inspect the project deeply without editing files. Read the scaffold guidance, then inspect existing documentation, code, data references, outputs, paper files, logs, configuration, and any existing orientation files such as AGENTS.md, PROJECT_STATE.md, README.md, or PROJECT_PROFILE.md.
+
+If research_explorer, critical_reviewer, and verifier are available, use them for the full onboarding workflow: research_explorer for repository mapping and orientation discovery, critical_reviewer for auditing the onboarding proposal and reconciliation risks, and verifier after approved implementation to check that the artifacts match the plan.
 
 Infer what the project is about, how the repository is organized, how code relates to data and paper outputs, and what the current status appears to be. Clearly distinguish evidence-backed facts, inferences, assumptions, user-confirmed facts, and unresolved questions.
 
@@ -68,15 +76,41 @@ If existing orientation files are present, do not overwrite them silently. Revie
 Produce a project onboarding report and an implementation plan proposing project-specific AGENTS.md guidance, PROJECT_PROFILE.md content, and PROJECT_STATE.md content. Do not edit anything until I approve the plan.
 ```
 
+### Case B: The Scaffold Is Not Yet Present
+
+Use this path when the target project is an old or ongoing research project that does not yet contain this workflow infrastructure. This is the scaffold-integration case: Codex should inspect the target project and the scaffold source, then propose how to import or adapt the scaffold without silently overwriting existing `README.md`, `AGENTS.md`, `PROJECT_STATE.md`, notes, or other orientation files.
+
+If `$research-project-onboarding` is available, use it. If it is not available in the target project, Codex should proceed from the prompt's onboarding instructions directly and propose a safe scaffold-integration plan without assuming the skill is installed. This distinction matters because a repo-scoped skill from this scaffold will not automatically exist inside an unrelated pre-existing project unless it has been installed or copied at user scope, or otherwise made available.
+
+For exact file-level scaffold integration, provide the scaffold source as a local path or GitHub URL. If no scaffold source is provided, Codex should ask for one before claiming it can produce an exact file-level integration plan. If the goal is only onboarding guidance rather than file-level scaffold import, Codex may proceed from the onboarding logic directly, but it should state that distinction clearly.
+
+Copy-paste prompt for integrating this scaffold into an existing project:
+
+```text
+Please help adapt/import a Codex research workflow scaffold into this existing academic research project.
+
+Scaffold source: [LOCAL PATH OR GITHUB URL]
+
+Use $research-project-onboarding if it is available. If that skill is not available in this target project, proceed using the onboarding instructions in this prompt directly; do not assume the skill is installed.
+
+First, inspect this target research project deeply without editing files. Then inspect the scaffold source, using the local path or GitHub URL above. If no scaffold source is provided and I am asking for exact file-level scaffold integration, ask me for the source before claiming you can produce an exact file-level integration plan. If I only want onboarding guidance rather than file-level scaffold import, state that distinction and proceed from the onboarding logic directly.
+
+If research_explorer, critical_reviewer, and verifier are available, use them for the full onboarding workflow: research_explorer for repository mapping and orientation discovery, critical_reviewer for auditing the scaffold-integration proposal, merge/reconciliation strategy, and risks, and verifier after approved implementation to check that the artifacts match the plan.
+
+Propose an integration plan to add or adapt the workflow scaffold safely without silently overwriting existing README.md, AGENTS.md, PROJECT_STATE.md, notes, or other orientation files. After the scaffold integration plan, propose the subsequent onboarding process that will generate or reconcile project-specific AGENTS.md, PROJECT_PROFILE.md, and PROJECT_STATE.md.
+
+Clearly separate evidence-backed facts from files, inferences, assumptions, user-confirmed facts, and unresolved questions. Produce the onboarding report, proposed artifact contents or structures, implementation plan, and user-confirmation questions where needed. Do not edit anything until I approve.
+```
+
 Short refresh prompt for an already onboarded project:
 
 ```text
-Please refresh this project's onboarding state. Inspect the current repository structure, project profile, project state, agent guidance, and recent outputs without editing files. Identify what changed, what appears stale, and what needs user confirmation. Propose updates to AGENTS.md, PROJECT_PROFILE.md, and PROJECT_STATE.md, but do not edit anything until I approve.
+Please refresh this project's onboarding state. Use $research-project-onboarding if it is available. Inspect the current repository structure, project profile, project state, agent guidance, and recent outputs without editing files. Identify what changed, what appears stale, and what needs user confirmation. Propose updates to AGENTS.md, PROJECT_PROFILE.md, and PROJECT_STATE.md, but do not edit anything until I approve.
 ```
 
 ## Future Skills
 
-Future domain-specific skills should be added under `.agents/skills/`. Planned examples include:
+Future domain-specific skills may be added under `.agents/skills/` when a project has a recurring need. Planned examples include:
 
 - Stata empirical-analysis workflows.
 - MATLAB quantitative-model coding workflows.
@@ -85,10 +119,9 @@ Those skills are intentionally not included in this initial scaffold.
 
 ## Copying This Scaffold
 
-To use this scaffold in another research project, copy the repository contents into the new project root, then update:
+To use this scaffold in another research project, choose the path that matches the target:
 
-- `PROJECT_STATE.md`
-- Any project-specific sections of `AGENTS.md`
-- Future domain-specific skills under `.agents/skills/`, if needed
+- For a project where this scaffold is already present, use Case A onboarding to generate or reconcile project-specific `AGENTS.md`, `PROJECT_PROFILE.md`, and `PROJECT_STATE.md`.
+- For an old or ongoing project where this scaffold is not yet present, use Case B scaffold integration. Provide a local scaffold path or GitHub URL, then have Codex propose a safe import/adaptation plan before any files are copied or changed.
 
 Keep the generic workflow protocols stable unless the project has a clear reason to specialize them.

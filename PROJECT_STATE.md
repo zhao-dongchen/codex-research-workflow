@@ -23,6 +23,7 @@ Maintain a Codex-native academic research workflow scaffold.
 - A follow-up audit on 2026-05-20 restored the required constitution filename from `AGENTS.txt` to `AGENTS.md`.
 - A scaffold-hardening pass on 2026-05-20 added `workflow/DATA_GOVERNANCE.md`, strengthened reproducibility and output-freshness requirements, strengthened plan approval governance, and added `.gitignore` while removing `.DS_Store`, `.codex/.DS_Store`, and `.Rhistory` from Git tracking.
 - An Existing Project Onboarding layer was added on 2026-05-20 to guide inspection, inference, and approved creation or reconciliation of project-specific orientation artifacts for pre-existing research repositories.
+- A focused non-public workflow upgrade on 2026-05-20 clarified the two existing-project onboarding scenarios in `README.md`, corrected the `AGENTS.md` onboarding-report inventory, added the first real workflow skill (`research-project-onboarding`), clarified that the skill is conceptually cross-project and may later be installed at user scope, and updated onboarding prompts to operationalize the skill and request subagent support when available.
 
 ## Open Questions
 
@@ -58,6 +59,17 @@ Existing Project Onboarding verification passed on 2026-05-20:
 - `AGENTS.md`, `README.md`, and `workflow/QUALITY_GATES.md` reference the onboarding workflow.
 - The onboarding guidance requires inspection before edits, handles existing orientation artifacts, and distinguishes evidence-backed facts, inferences, assumptions, user-confirmed facts, and unresolved questions.
 - No domain-specific skills, hooks, or automation were added.
+
+Focused non-public workflow upgrade verification passed on 2026-05-20:
+
+- `README.md` distinguishes Case A, where the scaffold is already present, from Case B, where an existing project does not yet contain the scaffold.
+- Case A and Case B include practical copy-paste prompts; Case B includes `Scaffold source: [LOCAL PATH OR GITHUB URL]`, remains robust when `$research-project-onboarding` is unavailable, and says Codex should ask for a scaffold source before exact file-level integration planning.
+- `README.md` prompts mention `$research-project-onboarding` where appropriate and request `research_explorer`, `critical_reviewer`, and `verifier` when available.
+- `AGENTS.md` includes onboarding reports in the `quality_reports/` inventory.
+- `.agents/skills/research-project-onboarding/SKILL.md` exists with valid `name` and `description` front matter, is instruction-only, covers both onboarding scenarios, and distinguishes evidence, inference, assumptions, user-confirmed facts, and unresolved questions.
+- `.agents/skills/README.md` distinguishes repo-scoped skills from reusable user-level skills and positions `research-project-onboarding` as the canonical source implementation in this repo.
+- No public-facing issue-4 items, domain-specific Stata or MATLAB skills, hooks, scripts, or automation were added.
+- A final focused pre-commit audit using `critical_reviewer` and `verifier` found no substantive implementation blocker. It identified one bookkeeping/governance issue: the plan and this project state had already been marked completed or verified before the final audit was recorded. That issue was resolved by updating the workflow records before commit.
 
 ## Next Recommended Action
 
