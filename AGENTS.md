@@ -30,17 +30,19 @@ Complex or ambiguous work may first require a requirements specification. Save s
 
 Approved implementation plans should be saved under `quality_reports/plans/`.
 
-Substantial session logs, review reports, and checkpoints should be saved under:
+Substantial session logs, review reports, checkpoints, and onboarding reports should be saved under:
 
 - `quality_reports/session_logs/`
 - `quality_reports/reviews/`
 - `quality_reports/checkpoints/`
+- `quality_reports/onboarding/`
 
 ## Required Protocols
 
 For nontrivial work, agents should consult the relevant protocol files in `workflow/` before proceeding:
 
 - Before creating a plan, read `workflow/PLAN_PROTOCOL.md`.
+- Before adapting this scaffold into an existing research project, or before creating or revising project-specific `AGENTS.md`, `PROJECT_PROFILE.md`, or initial `PROJECT_STATE.md`, read `workflow/PROJECT_ONBOARDING_PROTOCOL.md`.
 - Before implementing an approved plan, read `workflow/ORCHESTRATOR_PROTOCOL.md`.
 - Before working with data, logs, credentials, sensitive materials, or durable reports, read `workflow/DATA_GOVERNANCE.md`.
 - Before claiming completion, read `workflow/VERIFICATION_PROTOCOL.md` and `workflow/QUALITY_GATES.md`.
@@ -48,6 +50,8 @@ For nontrivial work, agents should consult the relevant protocol files in `workf
 - Before handoff or session close, read `workflow/MEMORY_AND_LOGGING.md`.
 
 These protocol files define the repository’s operational workflow and should be treated as part of the project instructions.
+
+If this scaffold has been copied into a pre-existing research project and project-specific orientation has not yet been established, agents should recommend or initiate the onboarding workflow before substantial implementation work. This should not block narrow, immediate tasks when the user explicitly asks for them.
 
 ## Project Memory
 

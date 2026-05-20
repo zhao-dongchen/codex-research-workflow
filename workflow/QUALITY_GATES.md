@@ -27,6 +27,19 @@ When this scaffold is copied into a real research project, first establish:
 
 Record these in `PROJECT_STATE.md`, a requirements specification, or project-specific documentation before substantive research work begins.
 
+## Existing Project Onboarding Gate
+
+When this scaffold is copied into a pre-existing research project, recommend or initiate onboarding before substantial Codex-assisted implementation work unless project-specific orientation is already established.
+
+Before substantial work begins, the project should have:
+
+- A reviewed `PROJECT_PROFILE.md` or equivalent orientation.
+- Project-specific agent instructions.
+- An initial or updated `PROJECT_STATE.md`.
+- A clear record of what is evidence-backed, inferred, assumed, user-confirmed, and unresolved.
+
+This gate should not block narrow, immediate tasks that the user explicitly requests, but missing orientation should be surfaced when it affects safety, reproducibility, or interpretation.
+
 ## Implementation Gate
 
 Before claiming implementation is done:

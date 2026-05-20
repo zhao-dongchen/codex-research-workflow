@@ -22,6 +22,7 @@ Maintain a Codex-native academic research workflow scaffold.
 - The initial scaffold was created and verified on 2026-05-20.
 - A follow-up audit on 2026-05-20 restored the required constitution filename from `AGENTS.txt` to `AGENTS.md`.
 - A scaffold-hardening pass on 2026-05-20 added `workflow/DATA_GOVERNANCE.md`, strengthened reproducibility and output-freshness requirements, strengthened plan approval governance, and added `.gitignore` while removing `.DS_Store`, `.codex/.DS_Store`, and `.Rhistory` from Git tracking.
+- An Existing Project Onboarding layer was added on 2026-05-20 to guide inspection, inference, and approved creation or reconciliation of project-specific orientation artifacts for pre-existing research repositories.
 
 ## Open Questions
 
@@ -50,6 +51,13 @@ Scaffold-hardening verification passed on 2026-05-20:
 - Plan approval governance is reflected in the plan protocol, execution-plan template, and active-plan state fields.
 - `.gitignore` ignores `.DS_Store`, nested `.DS_Store`, and `.Rhistory`.
 - `.DS_Store`, `.codex/.DS_Store`, and `.Rhistory` were removed from Git tracking while remaining ignored local files.
+
+Existing Project Onboarding verification passed on 2026-05-20:
+
+- `workflow/PROJECT_ONBOARDING_PROTOCOL.md`, `templates/project-profile.md`, `templates/project-onboarding-report.md`, and `quality_reports/onboarding/.gitkeep` exist.
+- `AGENTS.md`, `README.md`, and `workflow/QUALITY_GATES.md` reference the onboarding workflow.
+- The onboarding guidance requires inspection before edits, handles existing orientation artifacts, and distinguishes evidence-backed facts, inferences, assumptions, user-confirmed facts, and unresolved questions.
+- No domain-specific skills, hooks, or automation were added.
 
 ## Next Recommended Action
 

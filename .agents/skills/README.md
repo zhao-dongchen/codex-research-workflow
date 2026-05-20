@@ -6,6 +6,7 @@ No substantive domain-specific skills are included in the initial scaffold. This
 
 Potential future skills may include:
 
+- A reusable `research-project-onboarding` skill that packages the onboarding protocol once it is stable.
 - Stata empirical-analysis workflows.
 - MATLAB quantitative-model coding workflows.
 
