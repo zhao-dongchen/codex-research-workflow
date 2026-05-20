@@ -26,7 +26,8 @@ Maintain a Codex-native academic research workflow scaffold.
 - A focused non-public workflow upgrade on 2026-05-20 clarified the two existing-project onboarding scenarios in `README.md`, corrected the `AGENTS.md` onboarding-report inventory, added the first real workflow skill (`research-project-onboarding`), clarified that the skill is conceptually cross-project and may later be installed at user scope, and updated onboarding prompts to operationalize the skill and request subagent support when available.
 - A Stata empirical data-analysis skill (`stata-data-analysis`) was added on 2026-05-20 as the first substantive empirical-analysis skill, covering data reconnaissance, missingness and unit diagnosis, sample construction, exploratory and goal-directed analysis, merge discipline, readable Stata code, outputs, and Stata pipeline review.
 - A MATLAB quantitative-modeling skill (`matlab-quantitative-modeling`) was added on 2026-05-20 as the first substantive quantitative-modeling skill, covering model-code reconnaissance, numerical implementation, distribution/simulation/moments, calibration/estimation/optimization, nonstandard numerical structures, generated-code caution, readable MATLAB code, efficiency, and MATLAB model-code review.
-- `stata-data-analysis` and `matlab-quantitative-modeling` are currently broad v0.1 workflow skills. A later refactor may split them into narrower Pedro-style producer/reviewer skills, such as `review-stata`, `matlab-model-implementation`, and `review-matlab-model`.
+- A Stage 1 Pedro-style Stata skill refactor on 2026-05-20 made `stata-data-analysis` the Stata producer skill and added `review-stata` as the read-only Stata reviewer skill.
+- A Stage 2 Pedro-style MATLAB skill refactor on 2026-05-20 added `matlab-model-implementation` as the MATLAB producer/modifier skill, added `review-matlab-model` as the read-only MATLAB model reviewer skill, and converted `matlab-quantitative-modeling` into a temporary compatibility pointer.
 
 ## Open Questions
 
@@ -89,6 +90,33 @@ MATLAB quantitative-modeling skill verification passed on 2026-05-20:
 - The skill covers model-code reconnaissance, numerical implementation and revision, distribution/simulation/moments, calibration/estimation/optimization, nonstandard numerical structure awareness, and MATLAB code review/readability/performance audit.
 - The skill includes a dedicated efficiency and memory discipline section, human-readable quantitative code standards, generated-code/toolchain caution, explicit boundaries, and optional available-agent guidance.
 - `README.md` and `.agents/skills/README.md` mention the new skill with minimal documentation changes.
+
+Stata producer/reviewer split verification passed on 2026-05-20:
+
+- The approved plan is saved at `quality_reports/plans/2026-05-20-stata-producer-reviewer-split.md`.
+- `.agents/skills/stata-data-analysis/SKILL.md` exists and is now producer-oriented, points read-only review or audit requests to `review-stata`, and recommends `review-stata` before finalizing substantial empirical outputs.
+- `.agents/skills/review-stata/SKILL.md` exists as a read-only reviewer skill with a severity-ranked Stata Review Report deliverable.
+- Both Stata skill files have front matter containing only `name` and `description`.
+- `.agents/skills/review-stata/` contains only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
+- `README.md` and `.agents/skills/README.md` list `stata-data-analysis` as the Stata producer skill and `review-stata` as the read-only Stata reviewer skill.
+- `.agents/skills/matlab-quantitative-modeling/SKILL.md` was not changed.
+
+MATLAB producer/reviewer split verification passed on 2026-05-20:
+
+- The approved plan is saved at `quality_reports/plans/2026-05-20-matlab-producer-reviewer-split.md`.
+- `.agents/skills/matlab-model-implementation/SKILL.md` exists as the MATLAB producer/modifier skill with deliverables for a `Model-Code Map`, change-impact analysis, implementation plan, approved file changes, verification summary, and unresolved risks.
+- `.agents/skills/review-matlab-model/SKILL.md` exists as the read-only MATLAB model reviewer skill with a severity-ranked `MATLAB Model Review Report` deliverable.
+- `.agents/skills/matlab-quantitative-modeling/SKILL.md` is now a short temporary compatibility pointer that directs users to `matlab-model-implementation` or `review-matlab-model` and does not claim automatic dispatch.
+- The new MATLAB skill directories contain only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
+- `README.md` and `.agents/skills/README.md` list the MATLAB producer/reviewer split and identify `matlab-quantitative-modeling` as a temporary compatibility pointer.
+- Stata skill files were not changed during the Stage 2 MATLAB split.
+
+Combined Stata/MATLAB skill-architecture pre-commit audit passed on 2026-05-20:
+
+- A final combined audit was run after the Stata and MATLAB producer/reviewer refactor implementation using `critical_reviewer` and `verifier`.
+- The audit found no substantive skill-architecture blockers.
+- The audit identified one bookkeeping issue: the Stata and MATLAB plan files and this project state had already marked the work completed or verified before the final audit was recorded.
+- That issue was resolved by records-only updates to the two plan files and this project state before commit.
 
 ## Next Recommended Action
 

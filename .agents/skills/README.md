@@ -9,9 +9,12 @@ User-level reusable skills should be installed under the user's global skills di
 ## Included Skills
 
 - `research-project-onboarding`: canonical source implementation of a reusable cross-project skill for onboarding or Codex-enabling existing academic research projects.
-- `stata-data-analysis`: canonical source implementation of a reusable cross-project empirical-analysis skill for Stata-based research workflows.
-- `matlab-quantitative-modeling`: canonical source implementation of a reusable cross-project quantitative-modeling skill for MATLAB-based economic modeling workflows.
+- `stata-data-analysis`: canonical source implementation of the reusable cross-project Stata producer skill for empirical analysis and artifact generation.
+- `review-stata`: canonical source implementation of the reusable cross-project read-only Stata reviewer skill for empirical pipelines, outputs, and reproducibility.
+- `matlab-model-implementation`: canonical source implementation of the reusable cross-project MATLAB producer/modifier skill for quantitative economic model code.
+- `review-matlab-model`: canonical source implementation of the reusable cross-project read-only MATLAB model reviewer skill.
+- `matlab-quantitative-modeling`: temporary compatibility pointer to the MATLAB producer and reviewer skills.
 
-`stata-data-analysis` and `matlab-quantitative-modeling` are broad v0.1 workflow skills. They may later be refactored into narrower Pedro-style producer/reviewer skills, such as `review-stata`, `matlab-model-implementation`, and `review-matlab-model`.
+Stata and MATLAB now have producer/reviewer skill splits. `matlab-quantitative-modeling` is retained temporarily for compatibility and may be removed after real-use testing.
 
 Add skills only when the project has a clear recurring need. Keep each skill narrow, documented, and testable.

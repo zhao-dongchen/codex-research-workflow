@@ -113,10 +113,13 @@ Please refresh this project's onboarding state. Use $research-project-onboarding
 Reusable skills may be added under `.agents/skills/` when a project has a recurring need. Current skills include:
 
 - `research-project-onboarding`: existing-project onboarding and scaffold integration.
-- `stata-data-analysis`: Stata-based empirical data-analysis workflows.
-- `matlab-quantitative-modeling`: MATLAB-based quantitative economic modeling workflows.
+- `stata-data-analysis`: Stata producer skill for empirical analysis and artifact generation.
+- `review-stata`: read-only Stata reviewer skill for empirical pipelines, outputs, and reproducibility.
+- `matlab-model-implementation`: MATLAB producer/modifier skill for quantitative economic model code.
+- `review-matlab-model`: read-only MATLAB model reviewer skill for economic correctness, numerical correctness, downstream consistency, performance, memory, and readability.
+- `matlab-quantitative-modeling`: temporary compatibility pointer to the MATLAB producer and reviewer skills.
 
-`stata-data-analysis` and `matlab-quantitative-modeling` are broad v0.1 workflow skills. They may later be refactored into narrower Pedro-style producer/reviewer skills, such as `review-stata`, `matlab-model-implementation`, and `review-matlab-model`.
+Stata and MATLAB now have producer/reviewer skill splits. `matlab-quantitative-modeling` is retained temporarily for compatibility and may be removed after real-use testing.
 
 ## Copying This Scaffold
 
