@@ -18,6 +18,7 @@ No active implementation plan is currently in progress.
 - Future Stata empirical-analysis and MATLAB model-coding support should be added later as skills.
 - Generic project-scoped agents are read-only by default.
 - The initial scaffold was created and verified on 2026-05-20.
+- A follow-up audit on 2026-05-20 restored the required constitution filename from `AGENTS.txt` to `AGENTS.md`.
 
 ## Open Questions
 
@@ -37,6 +38,7 @@ Initial scaffold verification passed on 2026-05-20:
 - `.codex/config.toml` contains only the requested `[agents]` settings.
 - Custom agent TOML files parse and include `sandbox_mode = "read-only"`.
 - `.agents/skills/` contains only placeholder documentation.
+- Follow-up audit confirmed `AGENTS.md` exists and no `AGENTS.txt` remains.
 
 ## Next Recommended Action
 

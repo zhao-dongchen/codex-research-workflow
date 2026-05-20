@@ -71,5 +71,5 @@ A task is complete only when:
 - The agreed scope has been addressed.
 - Verification evidence has been collected or the inability to verify has been clearly explained.
 - Review findings have been resolved or explicitly accepted as residual risk.
-- Relevant files under `PROJECT_STATE.md` or `quality_reports/` have been updated when appropriate.
+- `PROJECT_STATE.md` and relevant files under `quality_reports/` have been updated when appropriate.
 - The final summary states what changed, what was verified, and what remains uncertain.
