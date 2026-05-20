@@ -62,18 +62,27 @@ Before review:
 
 ## Review Gate
 
-Before finalization:
+Before scoring or finalization:
 
 - Review findings have been addressed or accepted as residual risk.
 - Important research assumptions and reproducibility concerns have been considered.
 - Evidence supports the completion claim.
+
+## Score Gate
+
+Before finalization for substantial research-code or research-output tasks:
+
+- `workflow/QUALITY_SCORE_PROTOCOL.md` has been applied.
+- The score threshold is met, or the user has explicitly accepted the residual risk.
+- Any below-threshold override is recorded with the reason and unresolved risks.
+- The score is presented as a governance signal, not proof of correctness.
 
 ## Handoff Gate
 
 Before ending substantial work:
 
 - `PROJECT_STATE.md` is updated if project state changed.
-- Plans, logs, reviews, specs, or checkpoints are saved when appropriate.
+- Plans, logs, reviews, specs, score reports, or checkpoints are saved when appropriate.
 - The final summary states changes, evidence, and residual uncertainty.
 
 ## Research-Specific Gate

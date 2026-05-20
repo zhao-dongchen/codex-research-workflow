@@ -268,11 +268,11 @@ Do not use this skill as the main tool for:
 
 For formal Stata analysis, use `stata-data-analysis`.
 
-For read-only Stata code or pipeline review, use `review-stata`.
+For read-only Stata code or pipeline review, use `review-stata` as the rubric, preferably through the `stata_reviewer` subagent when authorized and available.
 
 For deciding what empirical strategy to pursue, use `empirical-analysis-planner`.
 
-For checking whether results support a claim, use `validate-empirical-argument`.
+For checking whether results support a claim, use `critical_reviewer` when an independent argument review is needed.
 
 ## Optional Agents
 
@@ -280,7 +280,7 @@ Use available agents only when available and useful:
 
 - Use `research_explorer` to map a complex project or data pipeline.
 - Use `verifier` to check generated files, logs, outputs, and freshness claims.
-- Use a future data-documentation or empirical reviewer agent if one exists.
+- Use `stata_reviewer` to review Stata pipelines and outputs after implementation when authorized and available.
 
 Do not imply that subagents are guaranteed to run.
 

@@ -26,8 +26,10 @@ Maintain a Codex-native academic research workflow scaffold.
 - A focused non-public workflow upgrade on 2026-05-20 clarified the two existing-project onboarding scenarios in `README.md`, corrected the `AGENTS.md` onboarding-report inventory, added the first real workflow skill (`research-project-onboarding`), clarified that the skill is conceptually cross-project and may later be installed at user scope, and updated onboarding prompts to operationalize the skill and request subagent support when available.
 - A Stata empirical data-analysis skill (`stata-data-analysis`) was added on 2026-05-20 as the first substantive empirical-analysis skill, covering data reconnaissance, missingness and unit diagnosis, sample construction, exploratory and goal-directed analysis, merge discipline, readable Stata code, outputs, and Stata pipeline review.
 - A MATLAB quantitative-modeling skill (`matlab-quantitative-modeling`) was added on 2026-05-20 as the first substantive quantitative-modeling skill, covering model-code reconnaissance, numerical implementation, distribution/simulation/moments, calibration/estimation/optimization, nonstandard numerical structures, generated-code caution, readable MATLAB code, efficiency, and MATLAB model-code review.
-- A Stage 1 Pedro-style Stata skill refactor on 2026-05-20 made `stata-data-analysis` the Stata producer skill and added `review-stata` as the read-only Stata reviewer skill.
+- A Stage 1 Pedro-style Stata skill refactor on 2026-05-20 made `stata-data-analysis` the Stata producer skill and initially added `review-stata` as a read-only reviewer skill; the later Stata review architecture refinement supersedes that actor/rubric split.
 - A Stage 2 Pedro-style MATLAB skill refactor on 2026-05-20 added `matlab-model-implementation` as the MATLAB producer/modifier skill, added `review-matlab-model` as the read-only MATLAB model reviewer skill, and converted `matlab-quantitative-modeling` into a temporary compatibility pointer.
+- A Stata review architecture refinement on 2026-05-20 made `review-stata` the reusable review rubric and added `.codex/agents/stata_reviewer.toml` as the independent read-only Stata reviewer actor. The scaffold now treats skills as workflow-step instructions and subagents as independent evaluators or parallel inspectors.
+- A quality-score protocol was added on 2026-05-20 to support bounded auto-flow loops for substantial research-code and research-output work.
 
 ## Open Questions
 
@@ -94,11 +96,11 @@ MATLAB quantitative-modeling skill verification passed on 2026-05-20:
 Stata producer/reviewer split verification passed on 2026-05-20:
 
 - The approved plan is saved at `quality_reports/plans/2026-05-20-stata-producer-reviewer-split.md`.
-- `.agents/skills/stata-data-analysis/SKILL.md` exists and is now producer-oriented, points read-only review or audit requests to `review-stata`, and recommends `review-stata` before finalizing substantial empirical outputs.
-- `.agents/skills/review-stata/SKILL.md` exists as a read-only reviewer skill with a severity-ranked Stata Review Report deliverable.
+- `.agents/skills/stata-data-analysis/SKILL.md` exists and is now producer-oriented, points read-only review or audit requests to `review-stata`, and recommends review before finalizing substantial empirical outputs.
+- `.agents/skills/review-stata/SKILL.md` exists as a Stata review rubric with a severity-ranked Stata Review Report deliverable.
 - Both Stata skill files have front matter containing only `name` and `description`.
 - `.agents/skills/review-stata/` contains only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
-- `README.md` and `.agents/skills/README.md` list `stata-data-analysis` as the Stata producer skill and `review-stata` as the read-only Stata reviewer skill.
+- `README.md` and `.agents/skills/README.md` list `stata-data-analysis` as the Stata producer skill and `review-stata` as the Stata review rubric.
 - `.agents/skills/matlab-quantitative-modeling/SKILL.md` was not changed.
 
 MATLAB producer/reviewer split verification passed on 2026-05-20:
@@ -117,6 +119,17 @@ Combined Stata/MATLAB skill-architecture pre-commit audit passed on 2026-05-20:
 - The audit found no substantive skill-architecture blockers.
 - The audit identified one bookkeeping issue: the Stata and MATLAB plan files and this project state had already marked the work completed or verified before the final audit was recorded.
 - That issue was resolved by records-only updates to the two plan files and this project state before commit.
+
+Stata reviewer subagent and scoring structure verification passed on 2026-05-20:
+
+- The approved plan is saved at `quality_reports/plans/2026-05-20-stata-reviewer-subagent-and-scoring.md`.
+- `.codex/agents/stata_reviewer.toml` exists as a read-only Stata reviewer actor.
+- `.agents/skills/review-stata/SKILL.md` exists as the Stata review rubric and directs independent review to `stata_reviewer` when authorized and available.
+- `.agents/skills/stata-data-analysis/SKILL.md` exists as the Stata producer skill.
+- `workflow/QUALITY_SCORE_PROTOCOL.md` and `quality_reports/scores/.gitkeep` exist, and score reports are linked from the main workflow documentation.
+- `templates/quality-score-report.md` exists as the reusable score-report template.
+- The tracked duplicate `.agents/skills/empirical-analysis-planner copy/SKILL.md` was removed.
+- Follow-up audit fixes added blocker/cap rules to `workflow/QUALITY_SCORE_PROTOCOL.md`, tightened subagent authorization wording, clarified that rubric-only Stata review is non-independent self-review, and added `quality_reports/scores/2026-05-20-stata-reviewer-subagent-and-scoring.md` with a score of 91 against a threshold of 90.
 
 ## Next Recommended Action
 

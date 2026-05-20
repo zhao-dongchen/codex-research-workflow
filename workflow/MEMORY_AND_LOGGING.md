@@ -24,6 +24,7 @@ Use `quality_reports/` for detailed records:
 - `plans/`: approved execution plans.
 - `session_logs/`: substantial session logs.
 - `reviews/`: review reports.
+- `scores/`: quality score reports.
 - `checkpoints/`: intermediate handoffs.
 
 ## Naming Convention
@@ -39,6 +40,7 @@ Examples:
 ```text
 2026-05-20-initial-scaffold-plan.md
 2026-05-20-verification-checkpoint.md
+2026-05-20-quality-score.md
 ```
 
 ## What To Record
@@ -50,6 +52,7 @@ Record enough detail for another agent or researcher to resume work:
 - What changed.
 - What commands or checks were run.
 - What evidence was collected.
+- What quality score or threshold decision applied, when relevant.
 - What remains unresolved.
 
 Do not use logs as a substitute for clear code, reproducible scripts, or well-named outputs.

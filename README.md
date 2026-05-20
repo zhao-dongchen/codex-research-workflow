@@ -9,11 +9,11 @@ It is inspired by plan-first academic AI workflows, but it uses Codex-oriented c
 - `AGENTS.md`: the project constitution for Codex agents.
 - `PROJECT_STATE.md`: checked-in project memory and handoff state.
 - `workflow/`: protocols for planning, orchestration, verification, review, quality gates, and logging.
-- `templates/`: reusable templates for specs, plans, logs, reviews, and checkpoints.
-- `quality_reports/`: checked-in folders for saved specs, plans, logs, reviews, checkpoints, and onboarding reports.
+- `templates/`: reusable templates for specs, plans, logs, reviews, score reports, and checkpoints.
+- `quality_reports/`: checked-in folders for saved specs, plans, logs, reviews, scores, checkpoints, and onboarding reports.
 - `.codex/config.toml`: minimal project-level Codex agent settings.
-- `.codex/agents/`: generic read-only project agents for exploration, review, and verification.
-- `.agents/skills/`: project skills, including reusable workflow skills, Stata empirical data analysis, and MATLAB quantitative modeling.
+- `.codex/agents/`: read-only project agents for exploration, review, verification, and Stata review.
+- `.agents/skills/`: reusable workflow-step skills, including Stata datawork and MATLAB quantitative modeling.
 
 ## Core Workflow
 
@@ -25,10 +25,10 @@ For nontrivial tasks, use a plan-first workflow:
 4. After approval, follow:
 
 ```text
-IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SUMMARIZE
+IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
 ```
 
-Completion claims should be evidence-based. A final summary should state what changed, what was verified, and what uncertainty remains.
+Completion claims should be evidence-based. Substantial research-code and research-output tasks should be scored with `workflow/QUALITY_SCORE_PROTOCOL.md`; below-threshold work should stop with blockers and residual risk rather than endless editing. A final summary should state what changed, what was verified, what score or threshold decision applied, and what uncertainty remains.
 
 ## First Session In A New Research Project
 
@@ -38,7 +38,7 @@ Completion claims should be evidence-based. A final summary should state what ch
 4. If the task is complex or ambiguous, create a requirements spec using `templates/requirements-spec.md`.
 5. Create an execution plan using `templates/execution-plan.md`.
 6. Wait for plan approval before implementation when the task is nontrivial.
-7. Save logs, reviews, and checkpoints under `quality_reports/` as appropriate.
+7. Save logs, reviews, score reports, and checkpoints under `quality_reports/` as appropriate.
 8. Update `PROJECT_STATE.md` before handoff.
 
 ## Using This Scaffold With An Existing Research Project
@@ -113,13 +113,15 @@ Please refresh this project's onboarding state. Use $research-project-onboarding
 Reusable skills may be added under `.agents/skills/` when a project has a recurring need. Current skills include:
 
 - `research-project-onboarding`: existing-project onboarding and scaffold integration.
-- `stata-data-analysis`: Stata producer skill for empirical analysis and artifact generation.
-- `review-stata`: read-only Stata reviewer skill for empirical pipelines, outputs, and reproducibility.
+- `stata-data-prep-exploration`: Stata data orientation, missingness, keys, merges, and minimal cleaning plans.
+- `empirical-analysis-planner`: empirical strategy planning from available project and data evidence.
+- `stata-data-analysis`: Stata producer skill for empirical analysis code, diagnostics, logs, tables, figures, and output manifests.
+- `review-stata`: Stata review rubric for empirical pipelines, outputs, and reproducibility. Prefer the `stata_reviewer` subagent as the independent actor when authorized and available.
 - `matlab-model-implementation`: MATLAB producer/modifier skill for quantitative economic model code.
 - `review-matlab-model`: read-only MATLAB model reviewer skill for economic correctness, numerical correctness, downstream consistency, performance, memory, and readability.
 - `matlab-quantitative-modeling`: temporary compatibility pointer to the MATLAB producer and reviewer skills.
 
-Stata and MATLAB now have producer/reviewer skill splits. `matlab-quantitative-modeling` is retained temporarily for compatibility and may be removed after real-use testing.
+Stata review is split into a reusable rubric skill (`review-stata`) and an independent read-only reviewer actor (`.codex/agents/stata_reviewer.toml`). MATLAB currently keeps its existing producer/reviewer skill split. `matlab-quantitative-modeling` is retained temporarily for compatibility and may be removed after real-use testing.
 
 ## Copying This Scaffold
 

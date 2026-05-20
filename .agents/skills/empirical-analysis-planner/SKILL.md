@@ -209,11 +209,11 @@ Use `stata-data-prep-exploration` for raw data understanding and cleaning.
 
 Use `stata-data-analysis` to implement empirical analysis in Stata.
 
-Use `review-stata` to review Stata code or pipelines.
+Use `review-stata` as the Stata review rubric, preferably through the `stata_reviewer` subagent when independent review is available.
 
-Use `verify-research-outputs` to check files, logs, and freshness.
+Use `verifier` to check files, logs, output existence, and freshness when an independent verification actor is available.
 
-Use `validate-empirical-argument` to assess whether results support the intended claim.
+Use `critical_reviewer` to assess whether completed results support the intended claim when an independent argument review is needed.
 
 ## Optional Agents
 

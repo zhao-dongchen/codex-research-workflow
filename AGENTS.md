@@ -24,7 +24,8 @@ For nontrivial work, use this sequence:
 4. REVIEW
 5. FIX
 6. RE-VERIFY
-7. SUMMARIZE
+7. SCORE
+8. SUMMARIZE
 
 Complex or ambiguous work may first require a requirements specification. Save substantial requirements specifications under `quality_reports/specs/`.
 
@@ -36,6 +37,7 @@ Substantial session logs, review reports, checkpoints, and onboarding reports sh
 - `quality_reports/reviews/`
 - `quality_reports/checkpoints/`
 - `quality_reports/onboarding/`
+- `quality_reports/scores/`
 
 ## Required Protocols
 
@@ -47,6 +49,7 @@ For nontrivial work, agents should consult the relevant protocol files in `workf
 - Before working with data, logs, credentials, sensitive materials, or durable reports, read `workflow/DATA_GOVERNANCE.md`.
 - Before claiming completion, read `workflow/VERIFICATION_PROTOCOL.md` and `workflow/QUALITY_GATES.md`.
 - When a substantial review is requested or appropriate, read `workflow/REVIEW_PROTOCOL.md`.
+- Before scoring substantial research-code or research-output work, read `workflow/QUALITY_SCORE_PROTOCOL.md`.
 - Before handoff or session close, read `workflow/MEMORY_AND_LOGGING.md`.
 
 These protocol files define the repository’s operational workflow and should be treated as part of the project instructions.
@@ -57,7 +60,20 @@ If this scaffold has been copied into a pre-existing research project and projec
 
 `PROJECT_STATE.md` is the checked-in handoff file. Read it before starting substantial work and update it before ending substantial work.
 
-Use `PROJECT_STATE.md` for current status, active decisions, risks, and next actions. Use `quality_reports/` for detailed evidence, logs, specs, plans, reviews, checkpoints, and onboarding reports.
+Use `PROJECT_STATE.md` for current status, active decisions, risks, and next actions. Use `quality_reports/` for detailed evidence, logs, specs, plans, reviews, scores, checkpoints, and onboarding reports.
+
+## Skills And Workflow Steps
+
+Skills are reusable workflow instructions. They define how Codex should perform a recurring task, but they are not automatically independent reviewers.
+
+For Stata datawork, use the skills as workflow steps:
+
+- `stata-data-prep-exploration`: understand raw or partially processed data, keys, units, missingness, merges, and minimal cleaning.
+- `empirical-analysis-planner`: choose analysis strategy, variables, samples, specification ladder, and output plan from available evidence.
+- `stata-data-analysis`: implement or revise Stata analysis code, diagnostics, tables, figures, logs, and output manifests.
+- `review-stata`: Stata-specific review rubric for empirical pipelines and outputs.
+
+For MATLAB quantitative model work, use the MATLAB producer and reviewer skills already present in the scaffold.
 
 ## Subagents
 
@@ -66,8 +82,9 @@ Generic project-scoped Codex agents live in `.codex/agents/`:
 - `research_explorer`: inspection and context gathering.
 - `critical_reviewer`: adversarial review of plans, code, outputs, and reasoning.
 - `verifier`: independent verification and evidence collection.
+- `stata_reviewer`: independent read-only Stata review using the `review-stata` rubric.
 
-These agents are intentionally generic. Future domain-specific skills should live under `.agents/skills/` and should be added only when the project needs them.
+Subagents are independent actors. Use them for fresh review, verification, or parallel inspection when explicitly requested by the user or when the active runtime explicitly authorizes delegation for the task. Do not claim that a subagent ran unless it actually ran.
 
 ## Completion Standard
 
@@ -76,5 +93,6 @@ A task is complete only when:
 - The agreed scope has been addressed.
 - Verification evidence has been collected or the inability to verify has been clearly explained.
 - Review findings have been resolved or explicitly accepted as residual risk.
+- Substantial work has been scored when the score protocol applies, or scoring has been explicitly marked unnecessary.
 - `PROJECT_STATE.md` and relevant files under `quality_reports/` have been updated when appropriate.
 - The final summary states what changed, what was verified, and what remains uncertain.
