@@ -1,20 +1,20 @@
-# Quality Score Report
+# MATLAB Quality Score Report
 
 ## Task Summary
 
-State what was requested, what was produced, and whether this was full workflow mode or lightweight mode.
+State the quantitative model task, model component, output target, and whether full workflow mode was requested.
 
 ## Files Modified
 
 | File | Change Type | Notes |
 |------|-------------|-------|
-| `path/to/file` | added/modified/deleted | |
+| `path/to/file.m` | added/modified/deleted | |
 
 ## Files Inspected
 
 | File | Why It Was Inspected |
 |------|----------------------|
-| `path/to/file` | |
+| `path/to/file` | model/code/output/context |
 
 ## Outputs Generated Or Regenerated
 
@@ -24,40 +24,52 @@ State what was requested, what was produced, and whether this was full workflow 
 
 ## Verification Evidence
 
-- Commands run:
-- Logs inspected:
-- Tests or checks:
+- MATLAB command or entrypoint:
+- MATLAB/toolbox versions, if available:
+- Logs or console output inspected:
+- Convergence checks:
+- Simulation/distribution/moment checks:
 - Output freshness checks:
 - What could not be verified:
 
 ## Review Evidence
 
 - Independent reviewer/subagent used:
-- Rubric or protocol used:
-- Review findings resolved:
-- Review findings accepted as residual risk:
+- `review-matlab-model` rubric used: yes/no
+- Findings resolved:
+- Findings accepted as residual risk:
 - Review not performed because:
 
-## Score Table
+## 100-Point Rubric
 
 | Dimension | Points Available | Points Awarded | Evidence |
 |-----------|------------------|----------------|----------|
-| Correctness | | | |
-| Reproducibility | | | |
-| Research integrity | | | |
-| Output freshness | | | |
-| Code/artifact quality | | | |
-| Handoff clarity | | | |
+| Model-code mapping | 20 | | |
+| Economic logic and consistency with equations | 20 | | |
+| Numerical correctness and convergence checks | 20 | | |
+| Simulation, stationary distribution, and moment consistency | 15 | | |
+| Reproducibility and output freshness | 15 | | |
+| Performance, readability, and handoff clarity | 10 | | |
+| Total | 100 | | |
 
 ## Deductions And Caps
+
+Apply all relevant caps before finalizing the score:
+
+- MATLAB code does not run when execution is required: cap at `50` or lower.
+- Convergence not checked when central: cap at `75`.
+- Model equations and code are inconsistent: cap at `70`.
+- Stale simulation outputs used as evidence: cap at `70`.
+- Policy functions, stationary distribution, or moments not checked when relevant: cap at `80`.
+- Fabricated or unsupported numerical claim: cap at `60` or lower.
+- Performance issues prevent the required run: cap based on partial evidence.
+- Full workflow requested but no independent review: cap at `85`.
+- Full workflow requested but no verification: cap at `70`.
+- Unresolved blocker: cap at `69`.
 
 | Issue | Deduction Or Cap | Evidence | Status |
 |-------|------------------|----------|--------|
 | | | | |
-
-## Blockers
-
-- None, or list unresolved blockers.
 
 ## Final Score
 

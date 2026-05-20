@@ -22,13 +22,13 @@ For nontrivial tasks, use a plan-first workflow:
 1. Clarify requirements when the task is complex or ambiguous.
 2. Save substantial requirements specs in `quality_reports/specs/`.
 3. Create an execution plan and save approved plans in `quality_reports/plans/`.
-4. After approval, follow:
+4. After approval, follow the full workflow when requested:
 
 ```text
-IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
+PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
 ```
 
-Completion claims should be evidence-based. Substantial research-code and research-output tasks should be scored with `workflow/QUALITY_SCORE_PROTOCOL.md`; below-threshold work should stop with blockers and residual risk rather than endless editing. A final summary should state what changed, what was verified, what score or threshold decision applied, and what uncertainty remains.
+Completion claims should be evidence-based. In full workflow mode, `SCORE` is not optional: substantial research-code and research-output tasks should be scored with `workflow/QUALITY_SCORE_PROTOCOL.md` before completion is claimed. Below-threshold work should stop with blockers and residual risk rather than endless editing. A final summary should state what changed, what was verified, what review evidence exists, what score or threshold decision applied, and what uncertainty remains.
 
 ## First Session In A New Research Project
 
@@ -106,6 +106,50 @@ Short refresh prompt for an already onboarded project:
 
 ```text
 Please refresh this project's onboarding state. Use $research-project-onboarding if it is available. Inspect the current repository structure, project profile, project state, agent guidance, and recent outputs without editing files. Identify what changed, what appears stale, and what needs user confirmation. Propose updates to AGENTS.md, PROJECT_PROFILE.md, and PROJECT_STATE.md, but do not edit anything until I approve.
+```
+
+## Full Workflow Prompts
+
+Use these prompts when you want the whole scaffold loop rather than a lightweight inspection.
+
+### Full Empirical / Stata Workflow
+
+```text
+Please run the full empirical Stata workflow for this task.
+
+Follow the repository loop:
+
+PRE-EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
+
+Use `stata-data-prep-exploration` when raw data, sample construction, cleaning, or merges are involved. Use `empirical-analysis-planner` if the empirical design is not settled. Use `stata-data-analysis` for implementation, including do-file changes, regressions, tables, figures, logs, and output documentation.
+
+For review, use `review-stata` as the rubric and use `stata_reviewer` when authorized and available for independent Stata review. Use `verifier` when authorized and available for output freshness, reproducibility, and evidence checks. Before claiming completion, apply `workflow/QUALITY_SCORE_PROTOCOL.md` and save a score report under `quality_reports/scores/` when the task is substantial.
+
+Do not claim that a skill or subagent was used unless it actually was. Distinguish direct execution evidence from inference, and clearly report blockers, remaining risks, and any below-threshold override needed.
+```
+
+### Full Quantitative / MATLAB Workflow
+
+```text
+Please run the full quantitative MATLAB workflow for this task.
+
+Follow the repository loop:
+
+PRE-EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
+
+Use `matlab-quantitative-modeling` as the compatibility entrypoint if named, and route actual production work to `matlab-model-implementation` for model-code implementation or revision. Use `review-matlab-model` as the MATLAB model-review rubric and use `critical_reviewer` when authorized and available for independent review. Use `verifier` when authorized and available for execution evidence, output consistency, reproducibility, and freshness checks.
+
+Before claiming completion, apply `workflow/QUALITY_SCORE_PROTOCOL.md` and use `templates/matlab-quality-score-report.md` for substantial model-code or model-output work.
+
+Do not change model timing, equations, constraints, calibration targets, moments, simulation logic, or output interpretation silently. Distinguish direct execution evidence from inference, and clearly report blockers, remaining risks, and any below-threshold override needed.
+```
+
+### Lightweight Inspection Or Planning Workflow
+
+```text
+Please do a lightweight pass only. Inspect, plan, or summarize the relevant project context without running the full verify-review-score loop unless I explicitly request it.
+
+State what you inspected, what you inferred, what remains unknown, and what next full-workflow step would be needed before implementation or completion claims.
 ```
 
 ## Included Skills

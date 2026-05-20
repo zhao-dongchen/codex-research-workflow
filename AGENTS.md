@@ -31,7 +31,7 @@ Complex or ambiguous work may first require a requirements specification. Save s
 
 Approved implementation plans should be saved under `quality_reports/plans/`.
 
-Substantial session logs, review reports, checkpoints, and onboarding reports should be saved under:
+Substantial session logs, review reports, score reports, checkpoints, and onboarding reports should be saved under:
 
 - `quality_reports/session_logs/`
 - `quality_reports/reviews/`
@@ -95,4 +95,4 @@ A task is complete only when:
 - Review findings have been resolved or explicitly accepted as residual risk.
 - Substantial work has been scored when the score protocol applies, or scoring has been explicitly marked unnecessary.
 - `PROJECT_STATE.md` and relevant files under `quality_reports/` have been updated when appropriate.
-- The final summary states what changed, what was verified, and what remains uncertain.
+- The final summary states what changed, what was verified, what review and score evidence exists when applicable, and what remains uncertain.

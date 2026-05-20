@@ -1,42 +1,43 @@
 ---
 name: stata-data-analysis
-description: "Use for implementing Stata empirical analysis after data structure and analysis goals are sufficiently defined: write or revise do-files, run diagnostics, produce tables or figures, record logs, and summarize verification evidence. This is the Stata producer skill, not the read-only reviewer."
+description: "Use for producing empirical Stata work after data structure and analysis goals are sufficiently defined: write or revise .do files, implement data construction, run regressions, produce tables or figures, document outputs, and perform basic self-checks before handoff. This is a producer skill, not an independent reviewer."
 ---
 
 # Stata Data Analysis
 
-Use this skill when the user wants Codex to produce or modify Stata empirical analysis code, diagnostics, tables, figures, logs, or related reproducible outputs.
+Use this skill when the user wants Codex to produce or modify empirical Stata work.
 
-This skill assumes the data structure and empirical goal are sufficiently clear. If the data are not yet understood, use `stata-data-prep-exploration` first. If the specification has not been chosen, use `empirical-analysis-planner` first.
+This is a producer skill. It is for writing, revising, and running analysis code, not for independent audit. If the data are not yet understood, use `stata-data-prep-exploration` first. If the empirical design is not settled, use `empirical-analysis-planner` first.
 
-## Core Deliverables
+## Producer Deliverables
 
 Depending on scope, produce:
 
 - Stata implementation plan
-- do-file edits or new do-file structure
-- diagnostic commands
-- generated logs
-- generated tables, figures, or derived outputs
-- sample-count and missingness checks
+- new or revised `.do` files
+- data-construction steps
+- sample construction and restriction code
+- merge code and merge diagnostics
+- regression or descriptive-analysis code
+- generated tables, figures, logs, or derived outputs
 - output manifest
-- verification summary
+- basic self-check notes
 - unresolved empirical or data questions
 
 ## Producer Workflow
 
-For substantial Stata tasks:
+For substantial Stata production tasks:
 
 1. Read `AGENTS.md`, `PROJECT_STATE.md`, and relevant workflow protocols.
 2. Inspect existing do-files, logs, data references, metadata, codebooks, tables, and figures.
 3. Confirm the empirical goal, data access status, output paths, and reproducibility target.
-4. Identify the broadest defensible baseline sample and any required restrictions.
-5. Map requested concepts to variables and transformations.
-6. Implement readable Stata code with explicit paths, logs, sample checks, and output creation.
-7. Run available checks or provide exact commands when execution is not possible.
-8. Verify output existence, freshness, row counts, and key sanity checks where possible.
-9. Request independent review using `stata_reviewer` when authorized and available; otherwise apply the `review-stata` rubric as a non-independent self-review and label it that way.
-10. Fix review findings, re-verify, and produce a final evidence summary.
+4. Identify the broadest defensible baseline sample and required restrictions.
+5. Map requested concepts to variables, units, and transformations.
+6. Write or revise readable Stata code for data construction, regressions, tables, figures, logs, and output documentation.
+7. Run Stata code where execution is available, or provide exact commands when execution is not available.
+8. Perform basic self-checks before handoff.
+9. In full workflow mode, request independent review and verification rather than relying on this skill's self-check.
+10. Fix findings, re-run relevant checks, and report evidence and residual risks.
 
 ## Empirical Integrity Rules
 
@@ -62,27 +63,28 @@ Prefer do-files that are readable and rerunnable:
 - use clear section headers
 - open and close logs deliberately
 - define path conventions visibly
+- prefer project-relative paths where feasible
 - check required files before use where practical
-- avoid fragile absolute paths unless the project uses them intentionally
 - use `capture` sparingly and never to hide important failures
 - show sample counts after major restrictions
 - show merge diagnostics after merges
 - label generated variables where useful
 - write tables and figures to documented output paths
+- document generated outputs and how to reproduce them
 
-## Verification Expectations
+## Self-Check Before Handoff
 
-Where Stata execution is available, verify:
+Before presenting producer work as ready for review, check:
 
-- do-files run without relevant errors
-- logs are current
-- required outputs exist
-- sample sizes match expectations
-- merges have documented match diagnostics
-- key variables have plausible ranges and missingness
-- tables and figures are freshness-verified or marked `not freshness-verified`
+- do-files have a clear entrypoint
+- logs are generated or exact commands are provided
+- required outputs are written to documented paths
+- sample sizes are printed after major restrictions
+- merge diagnostics are visible when merges are used
+- key variables have plausible ranges, units, and missingness
+- tables and figures are either freshness-verified or explicitly marked `not freshness-verified`
 
-Where Stata execution is not available, provide exact commands for the user or a future agent to run and clearly mark unverified claims.
+This self-check is not independent review. In full workflow mode, use `review-stata` as the review rubric, use `stata_reviewer` when authorized and available for independent Stata review, and use `verifier` when authorized and available for output freshness, reproducibility, and evidence checks.
 
 ## Boundaries
 
@@ -91,20 +93,24 @@ Do not use this skill as the primary tool for:
 - raw data orientation before the data structure is understood
 - choosing the empirical design from scratch
 - independent read-only review
+- verifying freshness as an independent checker
 - validating whether written paper claims are supported by results
 
 Use `stata-data-prep-exploration` for raw data understanding and cleaning plans.
 
 Use `empirical-analysis-planner` for analysis design.
 
-Use `review-stata` as the review rubric and `stata_reviewer` as the independent reviewer actor when authorized and available. If only the rubric is used by the main agent, label the result as non-independent self-review.
+Use `review-stata` and `stata_reviewer` for review.
+
+Use `verifier` for independent output, log, freshness, and reproducibility checks.
 
 ## Final Response Standard
 
 End with:
 
-- what changed
+- what Stata code changed
 - what was run or directly verified
 - what outputs were generated or checked
+- what self-checks passed
 - what remains unverified
-- review or score status when applicable
+- what independent review, verification, or score step is still needed

@@ -1,136 +1,90 @@
 # Project State
 
-This file is checked-in project memory for Codex agents and human collaborators. Keep it concise and current. Put detailed evidence, logs, reviews, plans, and checkpoints in `quality_reports/`.
+Checked-in current state for Codex agents and human collaborators. Keep this file concise; put detailed history, logs, reviews, plans, checkpoints, and score reports under `quality_reports/`.
 
-## Current Objective
+## Current Purpose
 
-Maintain a Codex-native academic research workflow scaffold.
+Maintain a Codex-native academic research workflow scaffold for plan-first, evidence-based, reviewable research work.
 
-## Active Plan
+The scaffold is designed to be copied into empirical or quantitative research projects and then specialized with project-specific data, model, software, and collaboration conventions.
 
-- Path: none.
-- Status: none.
-- Approval: none.
+## Current Scaffold Status
 
-## Recent Decisions
+- Main constitution: `AGENTS.md`.
+- Workflow protocols: `workflow/`.
+- Reusable templates: `templates/`.
+- Durable reports: `quality_reports/`.
+- Repo-scoped skills: `.agents/skills/`.
+- Read-only project subagents: `.codex/agents/`.
+- Detailed hardening history: `quality_reports/session_logs/scaffold-hardening-log.md`.
 
-- The scaffold uses Codex-native files and conventions rather than Claude-specific files.
-- The initial scaffold is infrastructure only.
-- `stata-data-analysis` is the first substantive empirical-analysis skill included in the scaffold.
-- `matlab-quantitative-modeling` is the first substantive quantitative-modeling skill included in the scaffold.
-- Generic project-scoped agents are read-only by default.
-- The initial scaffold was created and verified on 2026-05-20.
-- A follow-up audit on 2026-05-20 restored the required constitution filename from `AGENTS.txt` to `AGENTS.md`.
-- A scaffold-hardening pass on 2026-05-20 added `workflow/DATA_GOVERNANCE.md`, strengthened reproducibility and output-freshness requirements, strengthened plan approval governance, and added `.gitignore` while removing `.DS_Store`, `.codex/.DS_Store`, and `.Rhistory` from Git tracking.
-- An Existing Project Onboarding layer was added on 2026-05-20 to guide inspection, inference, and approved creation or reconciliation of project-specific orientation artifacts for pre-existing research repositories.
-- A focused non-public workflow upgrade on 2026-05-20 clarified the two existing-project onboarding scenarios in `README.md`, corrected the `AGENTS.md` onboarding-report inventory, added the first real workflow skill (`research-project-onboarding`), clarified that the skill is conceptually cross-project and may later be installed at user scope, and updated onboarding prompts to operationalize the skill and request subagent support when available.
-- A Stata empirical data-analysis skill (`stata-data-analysis`) was added on 2026-05-20 as the first substantive empirical-analysis skill, covering data reconnaissance, missingness and unit diagnosis, sample construction, exploratory and goal-directed analysis, merge discipline, readable Stata code, outputs, and Stata pipeline review.
-- A MATLAB quantitative-modeling skill (`matlab-quantitative-modeling`) was added on 2026-05-20 as the first substantive quantitative-modeling skill, covering model-code reconnaissance, numerical implementation, distribution/simulation/moments, calibration/estimation/optimization, nonstandard numerical structures, generated-code caution, readable MATLAB code, efficiency, and MATLAB model-code review.
-- A Stage 1 Pedro-style Stata skill refactor on 2026-05-20 made `stata-data-analysis` the Stata producer skill and initially added `review-stata` as a read-only reviewer skill; the later Stata review architecture refinement supersedes that actor/rubric split.
-- A Stage 2 Pedro-style MATLAB skill refactor on 2026-05-20 added `matlab-model-implementation` as the MATLAB producer/modifier skill, added `review-matlab-model` as the read-only MATLAB model reviewer skill, and converted `matlab-quantitative-modeling` into a temporary compatibility pointer.
-- A Stata review architecture refinement on 2026-05-20 made `review-stata` the reusable review rubric and added `.codex/agents/stata_reviewer.toml` as the independent read-only Stata reviewer actor. The scaffold now treats skills as workflow-step instructions and subagents as independent evaluators or parallel inspectors.
-- A quality-score protocol was added on 2026-05-20 to support bounded auto-flow loops for substantial research-code and research-output work.
+No active implementation plan is currently recorded.
 
-## Open Questions
+## Active Workflow Loop
 
-- None currently recorded.
+Full workflow mode:
 
-## Known Risks
+```text
+PRE-EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
+```
 
-- Project-level Codex agent conventions may evolve, so custom agent files should remain simple and easy to adjust.
-- Future research projects copied from this scaffold must add their own project-specific data, model, replication, and software conventions.
+For ordinary nontrivial work, the core loop in `AGENTS.md` is:
 
-## Verification Status
+```text
+PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
+```
 
-Initial scaffold verification passed on 2026-05-20:
+Lightweight inspection or planning may skip implementation, review, and scoring when the user asks only for exploration, planning, or summary.
 
-- Requested scaffold files and directories exist.
-- No Claude-specific files or directories were created.
-- `.codex/config.toml` contains only the requested `[agents]` settings.
-- Custom agent TOML files parse and include `sandbox_mode = "read-only"`.
-- `.agents/skills/` contains only placeholder documentation.
-- Follow-up audit confirmed `AGENTS.md` exists and no `AGENTS.txt` remains.
+## Available Skills
 
-Scaffold-hardening verification passed on 2026-05-20:
+- `research-project-onboarding`: onboard or Codex-enable existing academic research projects.
+- `stata-data-prep-exploration`: inspect raw or partially processed Stata data, sample construction, keys, merges, missingness, and cleaning needs.
+- `empirical-analysis-planner`: map research questions to empirical strategy, variables, samples, specifications, tables, figures, and robustness checks.
+- `stata-data-analysis`: produce Stata do-files, data construction, regressions, tables, figures, logs, and output documentation.
+- `review-stata`: Stata review rubric for empirical pipelines, outputs, and reproducibility.
+- `matlab-model-implementation`: implement or revise MATLAB quantitative economic model code.
+- `review-matlab-model`: read-only MATLAB model review rubric.
+- `matlab-quantitative-modeling`: temporary compatibility pointer to MATLAB producer/reviewer skills.
 
-- `workflow/DATA_GOVERNANCE.md` exists and is linked from `AGENTS.md`.
-- Reproducibility and output-freshness requirements are present in the verification protocol, quality gates, and templates.
-- Plan approval governance is reflected in the plan protocol, execution-plan template, and active-plan state fields.
-- `.gitignore` ignores `.DS_Store`, nested `.DS_Store`, and `.Rhistory`.
-- `.DS_Store`, `.codex/.DS_Store`, and `.Rhistory` were removed from Git tracking while remaining ignored local files.
+## Available Subagents
 
-Existing Project Onboarding verification passed on 2026-05-20:
+- `research_explorer`: read-only context mapping and repository inspection.
+- `verifier`: read-only evidence, output, command, and reproducibility checks.
+- `critical_reviewer`: read-only adversarial review of plans, code, outputs, reasoning, and handoff quality.
+- `stata_reviewer`: read-only independent Stata review using the `review-stata` rubric.
 
-- `workflow/PROJECT_ONBOARDING_PROTOCOL.md`, `templates/project-profile.md`, `templates/project-onboarding-report.md`, and `quality_reports/onboarding/.gitkeep` exist.
-- `AGENTS.md`, `README.md`, and `workflow/QUALITY_GATES.md` reference the onboarding workflow.
-- The onboarding guidance requires inspection before edits, handles existing orientation artifacts, and distinguishes evidence-backed facts, inferences, assumptions, user-confirmed facts, and unresolved questions.
-- No domain-specific skills, hooks, or automation were added.
+Subagents should only be claimed when actually used.
 
-Focused non-public workflow upgrade verification passed on 2026-05-20:
+## Current Quality Gates
 
-- `README.md` distinguishes Case A, where the scaffold is already present, from Case B, where an existing project does not yet contain the scaffold.
-- Case A and Case B include practical copy-paste prompts; Case B includes `Scaffold source: [LOCAL PATH OR GITHUB URL]`, remains robust when `$research-project-onboarding` is unavailable, and says Codex should ask for a scaffold source before exact file-level integration planning.
-- `README.md` prompts mention `$research-project-onboarding` where appropriate and request `research_explorer`, `critical_reviewer`, and `verifier` when available.
-- `AGENTS.md` includes onboarding reports in the `quality_reports/` inventory.
-- `.agents/skills/research-project-onboarding/SKILL.md` exists with valid `name` and `description` front matter, is instruction-only, covers both onboarding scenarios, and distinguishes evidence, inference, assumptions, user-confirmed facts, and unresolved questions.
-- `.agents/skills/README.md` distinguishes repo-scoped skills from reusable user-level skills and positions `research-project-onboarding` as the canonical source implementation in this repo.
-- No public-facing issue-4 items, domain-specific Stata or MATLAB skills, hooks, scripts, or automation were added.
-- A final focused pre-commit audit using `critical_reviewer` and `verifier` found no substantive implementation blocker. It identified one bookkeeping/governance issue: the plan and this project state had already been marked completed or verified before the final audit was recorded. That issue was resolved by updating the workflow records before commit.
+- Plan-first work for nontrivial or ambiguous tasks.
+- Data governance before working with data, logs, credentials, sensitive materials, or durable reports.
+- Verification before completion claims.
+- Independent review for substantial work when requested or runtime-authorized.
+- Quality scoring for full workflow mode and substantial research-code or research-output tasks.
+- Score thresholds from `workflow/QUALITY_SCORE_PROTOCOL.md`:
+  - `<70`: do not present as complete.
+  - `70-79`: partial; needs user review.
+  - `80-89`: usable internal research output.
+  - `90-94`: strong research draft output.
+  - `95+`: polished, low-risk output.
+- Score does not replace verification or review; direct manual actions can bypass the score system.
 
-Stata empirical data-analysis skill verification passed on 2026-05-20:
+## Open Issues / Next Actions
 
-- `.agents/skills/stata-data-analysis/SKILL.md` exists with valid `name` and `description` front matter.
-- The skill directory contains only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
-- The skill covers data reconnaissance, variable/unit/missingness diagnosis, sample construction, exploratory and goal-directed analysis, and Stata code review/pipeline audit.
-- The skill includes external-data handling, merge diagnosis, missingness diagnosis, unit and scale checks, human-readable Stata code standards, table/figure/output standards, explicit boundaries, and optional subagent guidance.
-- `README.md` and `.agents/skills/README.md` mention the new skill with minimal documentation changes.
+- Test the full empirical workflow on a small real or toy Stata task.
+- Test the full MATLAB workflow on a small model-code change or dry-run review.
+- Decide later whether `matlab-quantitative-modeling` should remain as a compatibility pointer or be removed.
+- Do not add hooks or new agents until the manual Codex-native workflow has been exercised.
 
-MATLAB quantitative-modeling skill verification passed on 2026-05-20:
+## Last Verified State
 
-- `.agents/skills/matlab-quantitative-modeling/SKILL.md` exists with valid `name` and `description` front matter.
-- The skill directory contains only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
-- The skill covers model-code reconnaissance, numerical implementation and revision, distribution/simulation/moments, calibration/estimation/optimization, nonstandard numerical structure awareness, and MATLAB code review/readability/performance audit.
-- The skill includes a dedicated efficiency and memory discipline section, human-readable quantitative code standards, generated-code/toolchain caution, explicit boundaries, and optional available-agent guidance.
-- `README.md` and `.agents/skills/README.md` mention the new skill with minimal documentation changes.
+2026-05-20 structural cleanup:
 
-Stata producer/reviewer split verification passed on 2026-05-20:
-
-- The approved plan is saved at `quality_reports/plans/2026-05-20-stata-producer-reviewer-split.md`.
-- `.agents/skills/stata-data-analysis/SKILL.md` exists and is now producer-oriented, points read-only review or audit requests to `review-stata`, and recommends review before finalizing substantial empirical outputs.
-- `.agents/skills/review-stata/SKILL.md` exists as a Stata review rubric with a severity-ranked Stata Review Report deliverable.
-- Both Stata skill files have front matter containing only `name` and `description`.
-- `.agents/skills/review-stata/` contains only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
-- `README.md` and `.agents/skills/README.md` list `stata-data-analysis` as the Stata producer skill and `review-stata` as the Stata review rubric.
-- `.agents/skills/matlab-quantitative-modeling/SKILL.md` was not changed.
-
-MATLAB producer/reviewer split verification passed on 2026-05-20:
-
-- The approved plan is saved at `quality_reports/plans/2026-05-20-matlab-producer-reviewer-split.md`.
-- `.agents/skills/matlab-model-implementation/SKILL.md` exists as the MATLAB producer/modifier skill with deliverables for a `Model-Code Map`, change-impact analysis, implementation plan, approved file changes, verification summary, and unresolved risks.
-- `.agents/skills/review-matlab-model/SKILL.md` exists as the read-only MATLAB model reviewer skill with a severity-ranked `MATLAB Model Review Report` deliverable.
-- `.agents/skills/matlab-quantitative-modeling/SKILL.md` is now a short temporary compatibility pointer that directs users to `matlab-model-implementation` or `review-matlab-model` and does not claim automatic dispatch.
-- The new MATLAB skill directories contain only `SKILL.md`; no scripts, hooks, automation, assets, or reference files were added.
-- `README.md` and `.agents/skills/README.md` list the MATLAB producer/reviewer split and identify `matlab-quantitative-modeling` as a temporary compatibility pointer.
-- Stata skill files were not changed during the Stage 2 MATLAB split.
-
-Combined Stata/MATLAB skill-architecture pre-commit audit passed on 2026-05-20:
-
-- A final combined audit was run after the Stata and MATLAB producer/reviewer refactor implementation using `critical_reviewer` and `verifier`.
-- The audit found no substantive skill-architecture blockers.
-- The audit identified one bookkeeping issue: the Stata and MATLAB plan files and this project state had already marked the work completed or verified before the final audit was recorded.
-- That issue was resolved by records-only updates to the two plan files and this project state before commit.
-
-Stata reviewer subagent and scoring structure verification passed on 2026-05-20:
-
-- The approved plan is saved at `quality_reports/plans/2026-05-20-stata-reviewer-subagent-and-scoring.md`.
-- `.codex/agents/stata_reviewer.toml` exists as a read-only Stata reviewer actor.
-- `.agents/skills/review-stata/SKILL.md` exists as the Stata review rubric and directs independent review to `stata_reviewer` when authorized and available.
-- `.agents/skills/stata-data-analysis/SKILL.md` exists as the Stata producer skill.
-- `workflow/QUALITY_SCORE_PROTOCOL.md` and `quality_reports/scores/.gitkeep` exist, and score reports are linked from the main workflow documentation.
-- `templates/quality-score-report.md` exists as the reusable score-report template.
-- The tracked duplicate `.agents/skills/empirical-analysis-planner copy/SKILL.md` was removed.
-- Follow-up audit fixes added blocker/cap rules to `workflow/QUALITY_SCORE_PROTOCOL.md`, tightened subagent authorization wording, clarified that rubric-only Stata review is non-independent self-review, and added `quality_reports/scores/2026-05-20-stata-reviewer-subagent-and-scoring.md` with a score of 91 against a threshold of 90.
-
-## Next Recommended Action
-
-Copy this scaffold into a future research project or begin adding project-specific research conventions, specs, plans, and skills as needed.
+- `AGENTS.md`, `README.md`, workflow protocols, skills, score templates, and project state were aligned around the full workflow including SCORE.
+- `workflow/QUALITY_SCORE_PROTOCOL.md` was adapted from the upstream Claude quality-gate model into Codex-native Stata/MATLAB research workflow language.
+- `templates/quality-score-report.md`, `templates/stata-quality-score-report.md`, and `templates/matlab-quality-score-report.md` exist.
+- `stata-data-analysis` is producer-oriented; independent review belongs to `review-stata`, `stata_reviewer`, `review-matlab-model`, `critical_reviewer`, and `verifier` as appropriate.
+- Historical scaffold-hardening details were moved to `quality_reports/session_logs/scaffold-hardening-log.md`.
+- Current cleanup score report: `quality_reports/scores/2026-05-20-claude-quality-score-sync.md` with score `93`.

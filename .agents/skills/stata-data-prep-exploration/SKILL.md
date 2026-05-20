@@ -276,7 +276,7 @@ For checking whether results support a claim, use `critical_reviewer` when an in
 
 ## Optional Agents
 
-Use available agents only when available and useful:
+Use subagents only when authorized, available, and useful:
 
 - Use `research_explorer` to map a complex project or data pipeline.
 - Use `verifier` to check generated files, logs, outputs, and freshness claims.
