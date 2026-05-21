@@ -30,7 +30,9 @@ Skills under `.agents/skills/` are task-specific reusable workflow packages. The
 
 Custom agents under `.codex/agents/` are independent actors for exploration, verification, review, and similar roles. Reviewers and verifiers should be subagents, not skills. Do not claim that a skill or subagent was used unless it actually was used.
 
-The `workflow/` folder, if present, contains shared protocol/reference documents. These files are not an automatic Codex rule mechanism. Skills, subagents, nested AGENTS files, or user prompts may direct Codex to read them when relevant.
+Stata implementation uses `stata-data-analysis`. Independent Stata review uses `.codex/agents/stata_reviewer.toml`, and `stata_reviewer` applies `.codex/agents/references/stata-review-protocol.md`. If the main agent applies that protocol itself, label the review non-independent.
+
+The `workflow/` folder, if present, contains shared protocol/reference documents. It is not an automatic Codex rule mechanism. Skills, subagents, nested AGENTS files, or user prompts may direct Codex to read specific workflow files when relevant.
 
 ## Durable State
 

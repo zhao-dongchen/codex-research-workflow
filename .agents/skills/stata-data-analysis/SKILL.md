@@ -84,7 +84,7 @@ Before presenting producer work as ready for review, check:
 - key variables have plausible ranges, units, and missingness
 - tables and figures are either freshness-verified or explicitly marked `not freshness-verified`
 
-This self-check is not independent review. In full workflow mode, use `stata-data-analysis` for implementation, use the `stata_reviewer` subagent for independent Stata review when authorized and available, and use `verifier` when authorized and available for output freshness, reproducibility, and evidence checks. The Stata reviewer applies `.codex/agents/references/stata-review-protocol.md`.
+This self-check is not independent review. In full workflow mode, use `stata-data-analysis` for implementation, use the `stata_reviewer` subagent for independent Stata review when authorized and available, and use `verifier` when authorized and available for output freshness, reproducibility, and evidence checks. The Stata reviewer applies `.codex/agents/references/stata-review-protocol.md`. Review does not replace verification or scoring.
 
 ## Boundaries
 
@@ -100,7 +100,7 @@ Use `stata-data-prep-exploration` for raw data understanding and cleaning plans.
 
 Use `empirical-analysis-planner` for analysis design.
 
-Use the `stata_reviewer` subagent for independent Stata review. If the main agent applies `.codex/agents/references/stata-review-protocol.md` itself, label that review non-independent.
+Use the `stata_reviewer` subagent for independent Stata review. If the main agent applies `.codex/agents/references/stata-review-protocol.md` itself, label that review non-independent. Review does not replace verification or scoring.
 
 Use `verifier` for independent output, log, freshness, and reproducibility checks.
 

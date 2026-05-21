@@ -75,7 +75,7 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 
 ## Open Issues / Next Actions
 
-- Test the full empirical workflow on a small real or toy Stata task.
+- Test the full empirical workflow on a larger real or representative Stata task.
 - Test the full MATLAB workflow on a small model-code change or dry-run review.
 - Decide later whether `matlab-quantitative-modeling` should remain as a compatibility pointer or be removed.
 - Do not add hooks or new agents until the manual Codex-native workflow has been exercised.
@@ -87,4 +87,8 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 - `AGENTS.md` is now a short top-level constitution.
 - Stata review is routed to `stata_reviewer`, with checklist/reference material in `.codex/agents/references/stata-review-protocol.md`.
 - `workflow/` is described as a shared protocol/reference library, not an automatic rule mechanism.
-- The former Stata review skill was removed from the active skill inventory.
+- The obsolete Stata review procedure was removed from the active skill inventory.
+
+2026-05-20 Stata workflow smoke test:
+
+- Stata full-workflow smoke test passed on 2026-05-20; temporary toy artifacts were removed afterward.

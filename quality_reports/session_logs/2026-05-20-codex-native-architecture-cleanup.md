@@ -7,7 +7,7 @@ Restructure the scaffold so `AGENTS.md` contains only top-level always-loaded ru
 ## Changes Made
 
 - Slimmed `AGENTS.md` to a short project constitution.
-- Removed the active Stata review skill.
+- Removed the obsolete Stata review procedure from active skills.
 - Moved useful Stata review criteria into `.codex/agents/references/stata-review-protocol.md`.
 - Updated `stata_reviewer` so it is the independent read-only Stata reviewer actor.
 - Updated Stata producer/planner skills and templates to route review through `stata_reviewer`.

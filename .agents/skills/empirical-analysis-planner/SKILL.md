@@ -209,7 +209,7 @@ Use `stata-data-prep-exploration` for raw data understanding and cleaning.
 
 Use `stata-data-analysis` to implement empirical analysis in Stata.
 
-Use the `stata_reviewer` subagent for independent Stata review when authorized and available. The Stata reviewer applies `.codex/agents/references/stata-review-protocol.md`. If the main agent applies that checklist itself, label the review non-independent.
+Use the `stata_reviewer` subagent for independent Stata review when authorized and available. The Stata reviewer applies `.codex/agents/references/stata-review-protocol.md`. If the main agent applies that checklist itself, label the review non-independent. Review does not replace verification or scoring.
 
 Use `verifier` to check files, logs, output existence, and freshness when an independent verification actor is available.
 
