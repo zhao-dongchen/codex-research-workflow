@@ -117,7 +117,11 @@ Follow the repository loop:
 
 PRE-EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
 
-Use `matlab-quantitative-modeling` as the compatibility entrypoint if named, and route actual production work to `matlab-model-implementation` for model-code implementation or revision. Use `review-matlab-model` as the MATLAB model-review rubric and use `critical_reviewer` when authorized and available for independent review. Use `verifier` when authorized and available for execution evidence, output consistency, reproducibility, and freshness checks.
+Use `matlab-quantitative-modeling` only as a compatibility entrypoint if named. Use `matlab-model-planner` for model design, challenge mapping, component mapping, high-risk test planning, and implementation order. Use `matlab-model-builder` for coherent whole-model construction or revision.
+
+Inside the builder workflow, Codex should adaptively test and probe high-risk or result-critical components. It may use tiny-grid tests, boundary probes, parameter perturbations, sparse/dense comparisons, loop/vectorized comparisons, mass-conservation checks, convergence/residual checks, timing probes, and moment-direction checks when useful.
+
+Use `matlab_reviewer` for independent MATLAB code, numerical, performance, reproducibility, and model-consistency review. Use `critical_reviewer` for broader economic-model or research-claim review when a separate adversarial perspective is useful. Use `verifier` for execution evidence, output consistency, reproducibility, and freshness checks. Score only after evidence, review, and verification when substantial.
 
 Do not change model timing, equations, constraints, calibration targets, moments, simulation logic, or output interpretation silently. Distinguish direct execution evidence from inference, and clearly report blockers, remaining risks, and any below-threshold override needed.
 ```
@@ -138,9 +142,10 @@ Reusable skills may be added under `.agents/skills/` when a project has a recurr
 - `stata-data-prep-exploration`: Stata data orientation, missingness, keys, merges, and minimal cleaning plans.
 - `empirical-analysis-planner`: empirical strategy planning from available project and data evidence.
 - `stata-data-analysis`: Stata producer skill for empirical analysis code, diagnostics, logs, tables, figures, and output manifests.
-- `matlab-model-implementation`: MATLAB producer/modifier skill for quantitative economic model code.
-- `review-matlab-model`: read-only MATLAB model reviewer skill for economic correctness, numerical correctness, downstream consistency, performance, memory, and readability.
-- `matlab-quantitative-modeling`: temporary compatibility pointer to the MATLAB producer and reviewer skills.
+- `matlab-model-planner`: MATLAB quantitative model design, diagnosis, and implementation planning.
+- `matlab-model-builder`: MATLAB whole-model construction and revision with adaptive validation, probes, integration checks, and speed/memory discipline.
+- `matlab-model-implementation`: legacy compatibility pointer to the planner and builder.
+- `matlab-quantitative-modeling`: broad compatibility pointer to the current MATLAB workflow.
 
 ## Reviewer Routing
 
@@ -150,6 +155,17 @@ Reusable skills may be added under `.agents/skills/` when a project has a recurr
 - The Stata producer skill may request review, but does not review itself independently.
 - The `verifier` subagent handles output, log, freshness, and reproducibility evidence when available.
 - Review does not replace verification. Review does not replace scoring.
+
+## MATLAB Workflow
+
+- Use `matlab-model-planner` for design and challenge mapping before implementation.
+- Use `matlab-model-builder` for coherent whole-model construction.
+- Inside `matlab-model-builder`, adaptively test or probe high-risk/result-critical components rather than creating separate permanent component skills.
+- Quick probes may include tiny-grid tests, boundary probes, parameter perturbations, sparse/dense comparisons, mass-conservation checks, convergence checks, timing probes, and moment-direction checks.
+- Use `matlab_reviewer` for independent MATLAB code, numerical, performance, reproducibility, and model-consistency review.
+- Use `critical_reviewer` for broader economic-model or research-claim review when useful.
+- Use `verifier` for execution/output freshness evidence.
+- Score only after evidence, review, and verification when substantial.
 
 ## Copying This Scaffold
 

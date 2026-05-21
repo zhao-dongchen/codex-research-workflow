@@ -43,9 +43,10 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 - `stata-data-prep-exploration`: inspect raw or partially processed Stata data, sample construction, keys, merges, missingness, and cleaning needs.
 - `empirical-analysis-planner`: map research questions to empirical strategy, variables, samples, specifications, tables, figures, and robustness checks.
 - `stata-data-analysis`: produce Stata do-files, data construction, regressions, tables, figures, logs, and output documentation.
-- `matlab-model-implementation`: implement or revise MATLAB quantitative economic model code.
-- `review-matlab-model`: read-only MATLAB model review rubric.
-- `matlab-quantitative-modeling`: temporary compatibility pointer to MATLAB producer/reviewer skills.
+- `matlab-model-planner`: plan, diagnose, and map MATLAB quantitative model design before implementation.
+- `matlab-model-builder`: build or revise coherent MATLAB quantitative model code with adaptive validation and integration/sanity checks.
+- `matlab-model-implementation`: legacy compatibility pointer to MATLAB planner/builder routing.
+- `matlab-quantitative-modeling`: broad compatibility pointer to the current MATLAB workflow.
 
 ## Available Subagents
 
@@ -53,8 +54,11 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 - `verifier`: read-only evidence, output, command, and reproducibility checks.
 - `critical_reviewer`: read-only adversarial review of plans, code, outputs, reasoning, and handoff quality.
 - `stata_reviewer`: independent read-only Stata reviewer subagent.
+- `matlab_reviewer`: independent read-only MATLAB quantitative model reviewer subagent.
 
 `stata_reviewer` applies `.codex/agents/references/stata-review-protocol.md`. Subagents should only be claimed when actually used. If the main agent applies the Stata review protocol itself, label the review non-independent.
+
+`matlab_reviewer` applies `.codex/agents/references/matlab-review-protocol.md`. MATLAB review is not a skill. Economic model logic is covered by `matlab_reviewer`; use `critical_reviewer` for broader adversarial research-claim review when useful.
 
 ## Current Quality Gates
 
@@ -92,3 +96,8 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 2026-05-20 Stata workflow smoke test:
 
 - Stata full-workflow smoke test passed on 2026-05-20; temporary toy artifacts were removed afterward.
+
+2026-05-21 MATLAB workflow architecture update:
+
+- MATLAB workflow now uses `matlab-model-planner` for design/planning and `matlab-model-builder` for coherent whole-model construction with adaptive high-risk component validation and probes.
+- MATLAB review is routed to `matlab_reviewer` using `.codex/agents/references/matlab-review-protocol.md`; the obsolete MATLAB review procedure was removed from the active skill inventory.

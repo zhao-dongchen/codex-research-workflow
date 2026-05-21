@@ -35,7 +35,9 @@ State the quantitative model task, model component, output target, and whether f
 ## Review Evidence
 
 - Independent reviewer/subagent used:
-- `review-matlab-model` rubric used: yes/no
+- MATLAB review protocol reference used: yes/no (`.codex/agents/references/matlab-review-protocol.md`)
+- Economic model review used: `matlab_reviewer` / `critical_reviewer` / not applicable / not performed
+- Review independence: independent / non-independent / not performed
 - Findings resolved:
 - Findings accepted as residual risk:
 - Review not performed because:
@@ -44,12 +46,14 @@ State the quantitative model task, model component, output target, and whether f
 
 | Dimension | Points Available | Points Awarded | Evidence |
 |-----------|------------------|----------------|----------|
-| Model-code mapping | 20 | | |
-| Economic logic and consistency with equations | 20 | | |
-| Numerical correctness and convergence checks | 20 | | |
-| Simulation, stationary distribution, and moment consistency | 15 | | |
-| Reproducibility and output freshness | 15 | | |
-| Performance, readability, and handoff clarity | 10 | | |
+| Coherent whole-model construction and model-code mapping | 15 | | |
+| Economic logic and consistency with equations | 15 | | |
+| High-risk/result-critical component identification | 15 | | |
+| Adaptive validation, targeted tests, and probes | 15 | | |
+| Integration, sanity, convergence, simulation, distribution, and moment checks | 15 | | |
+| Reproducibility, output freshness, and execution evidence | 10 | | |
+| Performance, memory, readability, and handoff clarity | 10 | | |
+| Independent MATLAB and economic-model review evidence | 5 | | |
 | Total | 100 | | |
 
 ## Deductions And Caps
@@ -57,13 +61,18 @@ State the quantitative model task, model component, output target, and whether f
 Apply all relevant caps before finalizing the score:
 
 - MATLAB code does not run when execution is required: cap at `50` or lower.
+- No execution evidence when execution was feasible and required: cap at `70` or lower.
+- No targeted validation for nonstandard or high-risk/result-critical components: cap at `80` or lower.
+- No integration or sanity check for a full-model change: cap at `80` or lower.
 - Convergence not checked when central: cap at `75`.
 - Model equations and code are inconsistent: cap at `70`.
 - Stale simulation outputs used as evidence: cap at `70`.
 - Policy functions, stationary distribution, or moments not checked when relevant: cap at `80`.
-- Fabricated or unsupported numerical claim: cap at `60` or lower.
+- Fabricated or unsupported numerical or economic claim: cap at `60` or lower.
+- Performance claim without timing, profiling, or comparable evidence: deduct or cap based on materiality.
 - Performance issues prevent the required run: cap based on partial evidence.
 - Full workflow requested but no independent review: cap at `85`.
+- Economic model change with no economic-logic review: cap at `85` unless the user explicitly requested code-only work.
 - Full workflow requested but no verification: cap at `70`.
 - Unresolved blocker: cap at `69`.
 
