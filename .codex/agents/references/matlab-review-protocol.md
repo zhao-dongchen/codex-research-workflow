@@ -24,6 +24,14 @@ Distinguish direct evidence, execution-verified facts, inferences, assumptions, 
 - Minor: local clarity, robustness, metadata, or maintainability issue that does not currently change results.
 - Note: useful observation or optional improvement.
 
+## Review Depth And Resource Use
+
+For routine MATLAB changes, focus on changed files, dimensions, obvious numerical risks, and output evidence. Do not require exhaustive review for trivial wrappers or formatting.
+
+For high-risk quantitative model changes, review transition/distribution logic, solvers, interpolation, moments, simulations, estimation objectives, performance/memory, and tests more deeply.
+
+If execution evidence is missing for numerical claims, flag it rather than compensating with more static review.
+
 ## Review Checklist
 
 ### Model-Code Architecture
@@ -85,7 +93,7 @@ Distinguish direct evidence, execution-verified facts, inferences, assumptions, 
 ### Test And Probe Coverage
 
 - Check whether validation intensity matches complexity, novelty, and result importance.
-- High-risk components need targeted probes or tests.
+- High-risk components need targeted probes or tests, proportionate to their effect on results.
 - Long-project complexity is not a reason to skip validation.
 
 ### Reproducibility And Output Freshness

@@ -17,6 +17,7 @@ The scaffold is designed to be copied into empirical or quantitative research pr
 - Repo-scoped skills: `.agents/skills/`.
 - Read-only project subagents: `.codex/agents/`.
 - Subagent references: `.codex/agents/references/`.
+- Subagent resource policy: `.codex/agents/references/subagent-resource-policy.md`.
 - Detailed hardening history: `quality_reports/session_logs/scaffold-hardening-log.md`.
 
 No active implementation plan is currently recorded.
@@ -44,7 +45,7 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 - `empirical-analysis-planner`: map research questions to empirical strategy, variables, samples, specifications, tables, figures, and robustness checks.
 - `stata-data-analysis`: produce Stata do-files, data construction, regressions, tables, figures, logs, and output documentation.
 - `matlab-model-planner`: plan, diagnose, and map MATLAB quantitative model design before implementation.
-- `matlab-model-builder`: build or revise coherent MATLAB quantitative model code with adaptive validation and integration/sanity checks.
+- `matlab-model-builder`: build or revise coherent MATLAB quantitative model code with proportionate validation and integration/sanity checks.
 - `matlab-model-implementation`: legacy compatibility pointer to MATLAB planner/builder routing.
 - `matlab-quantitative-modeling`: broad compatibility pointer to the current MATLAB workflow.
 
@@ -59,6 +60,8 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 `stata_reviewer` applies `.codex/agents/references/stata-review-protocol.md`. Subagents should only be claimed when actually used. If the main agent applies the Stata review protocol itself, label the review non-independent.
 
 `matlab_reviewer` applies `.codex/agents/references/matlab-review-protocol.md`. MATLAB review is not a skill. Economic model logic is covered by `matlab_reviewer`; use `critical_reviewer` for broader adversarial research-claim review when useful.
+
+Subagents use `.codex/agents/references/subagent-resource-policy.md` for cost-aware scope and escalation decisions.
 
 ## Current Quality Gates
 
@@ -76,6 +79,7 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
   - `90-94`: strong research draft output.
   - `95+`: polished, low-risk output.
 - Score does not replace verification or review. Review does not replace execution evidence. Direct manual actions can bypass the score system.
+- Review and verification depth should be proportionate to task complexity and result implications.
 
 ## Open Issues / Next Actions
 
@@ -101,6 +105,10 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 
 - MATLAB workflow now uses `matlab-model-planner` for design/planning and `matlab-model-builder` for coherent whole-model construction with adaptive high-risk component validation and probes.
 - MATLAB review is routed to `matlab_reviewer` using `.codex/agents/references/matlab-review-protocol.md`; the obsolete MATLAB review procedure was removed from the active skill inventory.
+
+2026-05-21 Resource-aware review update:
+
+- Added `.codex/agents/references/subagent-resource-policy.md` and updated reviewer/verifier instructions to use proportionate scope rather than exhaustive review by default.
 
 2026-05-21 MATLAB workflow smoke test:
 

@@ -1,6 +1,6 @@
 ---
 name: matlab-quantitative-modeling
-description: "Compatibility pointer for MATLAB quantitative modeling prompts. Route design/planning to matlab-model-planner; whole-model construction, revision, adaptive high-risk component testing, probes, and integration/sanity checks to matlab-model-builder; independent MATLAB review to matlab_reviewer; verification to verifier; scoring to the MATLAB score protocol/template when substantial."
+description: "Compatibility pointer for MATLAB quantitative modeling prompts. Route design/planning to matlab-model-planner; whole-model construction, revision, proportionate high-risk component checks, probes, and integration/sanity checks to matlab-model-builder; independent MATLAB review to matlab_reviewer; verification to verifier; scoring to the MATLAB score protocol/template when substantial."
 ---
 
 # MATLAB Quantitative Modeling
@@ -9,7 +9,7 @@ This broad skill name is retained for compatibility with older prompts.
 
 Use `matlab-model-planner` for model design, diagnosis, model-object mapping, implementation planning, nonstandard numerical challenge mapping, high-risk component identification, and open-decision lists.
 
-Use `matlab-model-builder` for whole-model construction or revision, adaptive validation of high-risk/result-critical components, quick probes, targeted tests, integration and sanity checks, speed and memory discipline, and evidence handoff.
+Use `matlab-model-builder` for whole-model construction or revision, proportionate validation of high-risk/result-critical components, quick probes, targeted checks, integration and sanity checks, speed and memory discipline, and evidence handoff.
 
 Use `matlab_reviewer` for independent read-only MATLAB code, numerical, performance, reproducibility, and model-consistency review.
 

@@ -49,7 +49,7 @@ State the quantitative model task, model component, output target, and whether f
 | Coherent whole-model construction and model-code mapping | 15 | | |
 | Economic logic and consistency with equations | 15 | | |
 | High-risk/result-critical component identification | 15 | | |
-| Adaptive validation, targeted tests, and probes | 15 | | |
+| Proportionate validation, targeted tests, and probes | 15 | | Evidence should match risk; record deferred checks when relevant. |
 | Integration, sanity, convergence, simulation, distribution, and moment checks | 15 | | |
 | Reproducibility, output freshness, and execution evidence | 10 | | |
 | Performance, memory, readability, and handoff clarity | 10 | | |
@@ -62,7 +62,7 @@ Apply all relevant caps before finalizing the score:
 
 - MATLAB code does not run when execution is required: cap at `50` or lower.
 - No execution evidence when execution was feasible and required: cap at `70` or lower.
-- No targeted validation for nonstandard or high-risk/result-critical components: cap at `80` or lower.
+- No targeted validation for nonstandard or high-risk/result-critical components that affect results: cap at `80` or lower.
 - No integration or sanity check for a full-model change: cap at `80` or lower.
 - Convergence not checked when central: cap at `75`.
 - Model equations and code are inconsistent: cap at `70`.
@@ -104,3 +104,5 @@ Threshold interpretation:
 State whether the output is accepted, below threshold, blocked, or accepted only by explicit user override.
 
 Scoring must cite evidence from actual files, logs, outputs, commands, or review notes. Do not score from agent confidence alone. If evidence is missing, lower the score, apply a cap, or state that scoring cannot be completed. The score does not override unresolved blockers.
+
+Validation should be proportionate. Reward clear identification of high-risk/result-critical components, cheap probes or targeted checks where appropriate, explicit deferral of lower-value tests, verifier/reviewer assessment of sufficiency, and claims limited to the evidence. Do not require large test suites for low-risk construction work.

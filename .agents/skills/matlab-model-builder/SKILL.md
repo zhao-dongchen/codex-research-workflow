@@ -1,6 +1,6 @@
 ---
 name: matlab-model-builder
-description: "Use when the user wants Codex to build, revise, assemble, or extend a MATLAB quantitative model codebase or model folder. This is the main whole-model producer skill: coherent model construction, adaptive high-risk component validation, probes, integration/sanity checks, speed and memory discipline, and evidence handoff."
+description: "Use when the user wants Codex to build, revise, assemble, or extend a MATLAB quantitative model codebase or model folder. This is the main whole-model producer skill: coherent model construction, proportionate high-risk component validation, cheap probes, integration/sanity checks, speed and memory discipline, and evidence handoff."
 ---
 
 # MATLAB Model Builder
@@ -17,32 +17,34 @@ For substantial work:
 2. Identify or create the model folder structure.
 3. Build coherent code organized into meaningful components.
 4. Identify high-risk or result-critical components.
-5. Decide adaptive validation intensity for each important component.
-6. Quickly probe or play with components when useful.
-7. Add targeted tests for high-risk or nonstandard components.
-8. Run small-scale smoke tests when possible.
-9. Run baseline integration and sanity checks when possible.
-10. Record commands, logs, outputs, and known limitations.
-11. Hand off to reviewer subagents if full workflow mode is requested.
-12. Apply the score protocol or template only after evidence, review, and verification when substantial.
+5. Decide proportionate validation intensity for each important component.
+6. During construction, run cheap probes, smoke checks, and targeted checks where they are likely to catch meaningful errors.
+7. Defer broader validation to `verifier`, `matlab_reviewer`, or full workflow mode when that is more efficient.
+8. Record commands, logs, outputs, known limitations, and any important checks that were skipped or deferred.
+9. Hand off to reviewer subagents if full workflow mode is requested.
+10. Apply the score protocol or template only after evidence, review, and verification when substantial.
 
 Read `references/high-risk-component-tests.md` for detailed probe/test examples. Read `references/vectorization-memory-standards.md` when performance, memory, vectorization, sparse matrices, or profiling are material.
 
-## Adaptive Validation
+## Proportionate Validation
 
-Do not require a full formal component contract for every small helper. Do require explicit reasoning about which components are high risk or result-critical.
+Do not require a full formal component contract or large test suite for every small helper. Use judgment based on complexity, novelty, downstream importance, and failure risk. Long-project complexity does not justify skipping validation, but validation should be prioritized.
 
 Classify important components:
 
 - Light-check: simple helpers, formatting/output helpers, wrappers with little economic or numerical content. Use basic dimension, path, and smoke checks.
 - Moderate-risk: reusable transformations, standard grids/shocks, standard simulation helpers, simple moment wrappers. Use small examples, dimension checks, boundary checks, and sanity checks.
-- High-risk/result-critical: policy interpolation, off-grid mapping, transition matrices, distribution updates, VFI/Bellman/fixed-point solvers, price kernels, simulation engines, moment/objective functions, calibration/estimation routines, renegotiation/enforcement/payment schedules, and objects that directly affect headline results. Use targeted validation, numerical probes, and recorded evidence.
+- High-risk/result-critical: policy interpolation, off-grid mapping, transition matrices, distribution updates, VFI/Bellman/fixed-point solvers, price kernels, simulation engines, moment/objective functions, calibration/estimation routines, renegotiation/enforcement/payment schedules, and objects that directly affect headline results. Use targeted validation, numerical probes, and recorded evidence, but keep the evidence proportionate to the task.
 
-Justify why each important component receives light, moderate, or high validation intensity. Long-project complexity does not justify skipping validation. Large projects need prioritized validation, staged tests, logs, and sanity checks.
+If you skip or defer a plausible check, briefly record why. Do not claim correctness solely from static inspection.
+
+Construction-time checks include tiny-grid probes, dimension checks, boundary checks, smoke runs, mass/probability checks for transition or distribution objects, and cheap convergence or residual checks.
+
+Review/verification-time checks include broader reruns, output freshness verification, log/hash/manifest checks, independent numerical-logic review, and deeper tests if reviewers identify risk.
 
 ## Probes Are Allowed
 
-Codex may quickly probe components before finalizing code. Useful probes include tiny-grid tests, boundary cases, parameter perturbations, sparse/dense comparisons, loop/vectorized comparisons, mass-conservation checks, stochastic-matrix convention checks, policy-bound checks, convergence/residual checks, moment-direction checks, timings, and memory-footprint checks.
+Codex may quickly probe components before finalizing code. Useful probes include tiny-grid tests, boundary cases, parameter perturbations, sparse/dense comparisons, loop/vectorized comparisons, mass-conservation checks, stochastic-matrix convention checks, policy-bound checks, convergence/residual checks, moment-direction checks, timings, and memory-footprint checks. Do not create large test suites unless the user requests them or the component has high result risk.
 
 If a probe informs an implementation decision, summarize or save the evidence. If a probe reveals a bug or ambiguity, fix it or record the unresolved issue before continuing.
 

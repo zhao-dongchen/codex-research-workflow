@@ -10,7 +10,7 @@ It is intentionally generic: no Stata, MATLAB, R, LaTeX, Quarto, journal, or dat
 - `PROJECT_STATE.md`: checked-in project memory and handoff state.
 - `.agents/skills/`: task-specific reusable procedures, with local references, scripts, or assets when needed.
 - `.codex/agents/`: independent reviewers, verifiers, explorers, and other project-scoped subagents.
-- `.codex/agents/references/`: reference material for subagents, including the Stata review protocol.
+- `.codex/agents/references/`: reference material for subagents, including review protocols and resource-use policy.
 - `workflow/`: optional shared protocol/reference library, not automatic Codex rules.
 - `templates/`: reusable templates for specs, plans, logs, reviews, score reports, and checkpoints.
 - `quality_reports/`: saved plans, logs, reviews, scores, checkpoints, onboarding reports, and other durable evidence.
@@ -117,11 +117,11 @@ Follow the repository loop:
 
 PRE-EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
 
-Use `matlab-quantitative-modeling` only as a compatibility entrypoint if named. Use `matlab-model-planner` for model design, challenge mapping, component mapping, high-risk test planning, and implementation order. Use `matlab-model-builder` for coherent whole-model construction or revision.
+Use `matlab-quantitative-modeling` only as a compatibility entrypoint if named. Use `matlab-model-planner` for design and challenge mapping. Use `matlab-model-builder` for coherent whole-model construction or revision.
 
-Inside the builder workflow, Codex should adaptively test and probe high-risk or result-critical components. It may use tiny-grid tests, boundary probes, parameter perturbations, sparse/dense comparisons, loop/vectorized comparisons, mass-conservation checks, convergence/residual checks, timing probes, and moment-direction checks when useful.
+Inside the builder workflow, Codex should use proportionate validation: cheap probes and targeted checks for high-risk/result-critical components during construction, with broader validation deferred to verifier/reviewer/full workflow mode when appropriate.
 
-Use `matlab_reviewer` for independent MATLAB code, numerical, performance, reproducibility, and model-consistency review. Use `critical_reviewer` for broader economic-model or research-claim review when a separate adversarial perspective is useful. Use `verifier` for execution evidence, output consistency, reproducibility, and freshness checks. Score only after evidence, review, and verification when substantial.
+Use `matlab_reviewer` for independent MATLAB code, numerical, performance, reproducibility, and model-consistency review. Use `critical_reviewer` only when a broader adversarial perspective is useful. Use `verifier` for execution evidence and freshness checks. Score only after evidence, review, and verification when substantial.
 
 Do not change model timing, equations, constraints, calibration targets, moments, simulation logic, or output interpretation silently. Distinguish direct execution evidence from inference, and clearly report blockers, remaining risks, and any below-threshold override needed.
 ```
@@ -143,7 +143,7 @@ Reusable skills may be added under `.agents/skills/` when a project has a recurr
 - `empirical-analysis-planner`: empirical strategy planning from available project and data evidence.
 - `stata-data-analysis`: Stata producer skill for empirical analysis code, diagnostics, logs, tables, figures, and output manifests.
 - `matlab-model-planner`: MATLAB quantitative model design, diagnosis, and implementation planning.
-- `matlab-model-builder`: MATLAB whole-model construction and revision with adaptive validation, probes, integration checks, and speed/memory discipline.
+- `matlab-model-builder`: MATLAB whole-model construction and revision with proportionate validation, probes, integration checks, and speed/memory discipline.
 - `matlab-model-implementation`: legacy compatibility pointer to the planner and builder.
 - `matlab-quantitative-modeling`: broad compatibility pointer to the current MATLAB workflow.
 
@@ -155,15 +155,15 @@ Reusable skills may be added under `.agents/skills/` when a project has a recurr
 - The Stata producer skill may request review, but does not review itself independently.
 - The `verifier` subagent handles output, log, freshness, and reproducibility evidence when available.
 - Review does not replace verification. Review does not replace scoring.
+- Subagent review is cost-aware: use the narrowest useful reviewer and avoid unnecessary parallel review.
 
 ## MATLAB Workflow
 
 - Use `matlab-model-planner` for design and challenge mapping before implementation.
 - Use `matlab-model-builder` for coherent whole-model construction.
-- Inside `matlab-model-builder`, adaptively test or probe high-risk/result-critical components rather than creating separate permanent component skills.
-- Quick probes may include tiny-grid tests, boundary probes, parameter perturbations, sparse/dense comparisons, mass-conservation checks, convergence checks, timing probes, and moment-direction checks.
+- Inside `matlab-model-builder`, use cheap construction-time probes and targeted checks where risk justifies them; defer broader validation to `verifier`, `matlab_reviewer`, or full workflow mode.
 - Use `matlab_reviewer` for independent MATLAB code, numerical, performance, reproducibility, and model-consistency review.
-- Use `critical_reviewer` for broader economic-model or research-claim review when useful.
+- Use `critical_reviewer` for broader economic-model or research-claim review when useful, not by default.
 - Use `verifier` for execution/output freshness evidence.
 - Score only after evidence, review, and verification when substantial.
 

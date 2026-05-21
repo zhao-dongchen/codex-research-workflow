@@ -17,6 +17,14 @@ Report findings first and separate:
 
 For each finding, include severity, evidence, why it matters, and a suggested fix or decision. Distinguish directly verified facts, inferences, assumptions, and missing evidence.
 
+## Review Depth And Resource Use
+
+For routine Stata changes, focus on changed files, sample logic, outputs, and obvious risks. Do not require exhaustive review for trivial formatting or documentation-only changes.
+
+For high-stakes empirical changes, review sample construction, merges, variable definitions, weights, fixed effects, clustering, logs, output freshness, and interpretation more deeply.
+
+If execution evidence is missing for result claims, flag it rather than compensating with more static review.
+
 ## Checklist
 
 ### Data Provenance And Dataset Boundaries
