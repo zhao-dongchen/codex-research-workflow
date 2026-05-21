@@ -1,177 +1,118 @@
 # Codex Research Workflow Scaffold
 
-This repository is a Codex-native scaffold for academic research workflows. It gives future research projects a reusable structure for planning, implementation, verification, review, scoring, and handoff.
+This repository is a Codex-native scaffold for academic research workflows. It provides a reusable structure
+for planning, implementation, verification, review, scoring, and handoff.
 
-It is intentionally generic: no Stata, MATLAB, R, LaTeX, Quarto, journal, or data-source assumptions are built in unless a copied project adds them explicitly.
+The scaffold is intentionally generic. It does not hard-code Stata, MATLAB, R, LaTeX, Quarto, journal, or
+data-source conventions unless a copied project adds them explicitly.
 
-## What This Scaffold Provides
+## What It Provides
 
 - `AGENTS.md`: short top-level always-loaded project guidance.
-- `PROJECT_STATE.md`: checked-in project memory and handoff state.
-- `.agents/skills/`: task-specific reusable procedures, with local references, scripts, or assets when needed.
-- `.codex/agents/`: independent reviewers, verifiers, explorers, and other project-scoped subagents.
-- `.codex/agents/references/`: reference material for subagents, including review protocols and resource-use policy.
+- `PROJECT_STATE.md`: checked-in current state and handoff memory.
+- `.agents/skills/`: task-specific producer and planner workflows.
+- `.codex/agents/`: independent reviewers, verifiers, and explorers.
+- `.codex/agents/references/`: review rubrics and subagent reference material.
 - `workflow/`: optional shared protocol/reference library, not automatic Codex rules.
-- `templates/`: reusable templates for specs, plans, logs, reviews, score reports, and checkpoints.
-- `quality_reports/`: saved plans, logs, reviews, scores, checkpoints, onboarding reports, and other durable evidence.
-- `.codex/config.toml`: minimal project-level Codex settings.
+- `templates/`: reusable report and score templates.
+- `quality_reports/`: durable plans, logs, reviews, scores, checkpoints, and onboarding reports.
 
 ## Core Workflow
 
-For nontrivial tasks, use a plan-first workflow:
+For nontrivial tasks, use:
 
 ```text
 PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
 ```
 
-Completion claims should be evidence-based. Do not claim that verification, review, scoring, a skill, or a subagent was used unless it actually was. In full workflow mode, substantial research-code and research-output tasks should be scored with the relevant shared score protocol or template before completion is claimed.
+Completion claims must be evidence-based. Do not claim verification, review, scoring, a skill, or a
+subagent unless it actually ran.
 
-The `workflow/` folder contains shared protocol/reference documents. It is not an automatic rule mechanism; skills, subagents, nested `AGENTS.md` files, or user prompts may direct Codex to read specific workflow files when relevant.
+The `workflow/` folder contains shared protocol/reference documents. Skills, subagents, nested `AGENTS.md`
+files, or user prompts may direct Codex to read specific workflow files when relevant.
 
-## First Session In A New Research Project
+## First Session Or Onboarding
 
-1. Read `AGENTS.md`.
-2. Read `PROJECT_STATE.md`.
-3. Establish project basics: research objective, project type, data access class and storage convention, software/runtime expectations, reproducibility target, output-location convention, collaboration rules, and known constraints.
-4. Use `$research-project-onboarding` when onboarding or Codex-enabling an existing academic research project.
-5. Save logs, reviews, score reports, and checkpoints under `quality_reports/` as appropriate.
-6. Update `PROJECT_STATE.md` before handoff when the work materially changes project state.
+Use `$research-project-onboarding` when adapting this scaffold to an existing academic research project or
+creating project-specific orientation artifacts.
 
-## Using This Scaffold With An Existing Research Project
+Onboarding should inspect the project before editing, reconcile existing guidance rather than overwrite it
+silently, and distinguish evidence-backed facts, inferences, assumptions, user-confirmed facts, and
+unresolved questions.
 
-For a pre-existing research repository, use onboarding before substantial Codex-assisted implementation. Onboarding means Codex first inspects the existing project, infers what the project is about, reviews current orientation files, and proposes project-specific guidance before editing anything.
-
-The goal is to create or reconcile:
-
-- Project-specific `AGENTS.md` guidance.
-- A stable `PROJECT_PROFILE.md`.
-- An initial or updated `PROJECT_STATE.md`.
-- A record of what is evidence-backed, inferred, assumed, user-confirmed, or unresolved.
-
-### Case A: The Scaffold Is Already Present
-
-Use this path when the target project already contains this workflow scaffold, including files and folders such as `AGENTS.md`, `PROJECT_STATE.md`, `workflow/`, `templates/`, `quality_reports/`, and `.codex/`.
-
-Copy-paste prompt:
+Short prompt:
 
 ```text
-Please onboard this existing academic research project using the repository workflow.
+Please onboard this existing academic research project using $research-project-onboarding if available.
 
-Use $research-project-onboarding if it is available.
-
-First, inspect the project deeply without editing files. Read the scaffold guidance, then inspect existing documentation, code, data references, outputs, paper files, logs, configuration, and any existing orientation files such as AGENTS.md, PROJECT_STATE.md, README.md, or PROJECT_PROFILE.md.
-
-If research_explorer, critical_reviewer, and verifier are available, use them for the full onboarding workflow: research_explorer for repository mapping and orientation discovery, critical_reviewer for auditing the onboarding proposal and reconciliation risks, and verifier after approved implementation to check that the artifacts match the plan.
-
-Infer what the project is about, how the repository is organized, how code relates to data and paper outputs, and what the current status appears to be. Clearly distinguish evidence-backed facts, inferences, assumptions, user-confirmed facts, and unresolved questions.
-
-If existing orientation files are present, do not overwrite them silently. Review them and propose a merge, targeted revision, or reconciliation strategy. Surface conflicts, stale guidance, ambiguity, and questions for me.
-
-Produce a project onboarding report and an implementation plan proposing project-specific AGENTS.md guidance, PROJECT_PROFILE.md content, and PROJECT_STATE.md content. Do not edit anything until I approve the plan.
+First inspect the project without editing. Read existing guidance, code, data references, outputs, paper
+files, logs, and orientation files. Infer the project structure and status, distinguish evidence from
+inference and assumptions, then propose project-specific AGENTS.md, PROJECT_PROFILE.md, and
+PROJECT_STATE.md updates. Do not edit files until I approve.
 ```
 
-### Case B: The Scaffold Is Not Yet Present
+## Active Skills
 
-Use this path when the target project is an old or ongoing research project that does not yet contain this workflow infrastructure. Codex should inspect the target project and the scaffold source, then propose how to import or adapt the scaffold without silently overwriting existing orientation files.
+- `research-project-onboarding`: onboard or Codex-enable existing academic research projects.
+- `stata-data-prep-exploration`: inspect Stata data structure, keys, missingness, merges, and cleaning needs.
+- `empirical-analysis-planner`: map research questions to empirical strategy, variables, outputs, and checks.
+- `stata-data-analysis`: produce Stata do-files, diagnostics, logs, tables, figures, and output manifests.
+- `matlab-model-planner`: plan, diagnose, and map MATLAB quantitative model design before implementation.
+- `matlab-model-builder`: build or revise MATLAB model code with proportionate validation and integration checks.
 
-Copy-paste prompt:
+Reviewers are subagents, not skills.
 
-```text
-Please help adapt/import a Codex research workflow scaffold into this existing academic research project.
+## Reviewer Routing
 
-Scaffold source: [LOCAL PATH OR GITHUB URL]
+- Stata review uses `.codex/agents/stata_reviewer.toml`, which reads
+  `.codex/agents/references/stata-review-protocol.md`.
+- MATLAB review uses `.codex/agents/matlab_reviewer.toml`, which reads
+  `.codex/agents/references/matlab-review-protocol.md`.
+- `verifier` handles execution, output freshness, reproducibility, and evidence checks when available.
+- `critical_reviewer` handles broader adversarial review of plans, claims, reasoning, and handoff quality.
+- Review does not replace verification. Review does not replace scoring.
+- Subagent review is cost-aware: use the narrowest useful reviewer and avoid unnecessary parallel review.
 
-Use $research-project-onboarding if it is available. If that skill is not available in this target project, proceed using the onboarding instructions in this prompt directly; do not assume the skill is installed.
-
-First, inspect this target research project deeply without editing files. Then inspect the scaffold source. If no scaffold source is provided and I am asking for exact file-level scaffold integration, ask me for the source before claiming you can produce an exact file-level integration plan.
-
-If research_explorer, critical_reviewer, and verifier are available, use them for the full onboarding workflow: research_explorer for repository mapping and orientation discovery, critical_reviewer for auditing the scaffold-integration proposal, and verifier after approved implementation to check that the artifacts match the plan.
-
-Propose an integration plan to add or adapt the workflow scaffold safely without silently overwriting existing README.md, AGENTS.md, PROJECT_STATE.md, notes, or other orientation files. Do not edit anything until I approve.
-```
-
-## Full Workflow Prompts
-
-### Full Empirical / Stata Workflow
+## Stata Workflow Prompt
 
 ```text
 Please run the full empirical Stata workflow for this task.
 
-Follow the repository loop:
+Use stata-data-prep-exploration if raw data, sample construction, cleaning, or merges are involved. Use
+empirical-analysis-planner if the empirical design is not settled. Use stata-data-analysis for implementation.
 
-PRE-EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
-
-Use `stata-data-prep-exploration` when raw data, sample construction, cleaning, or merges are involved. Use `empirical-analysis-planner` if the empirical design is not settled. Use `stata-data-analysis` for implementation, including do-file changes, regressions, tables, figures, logs, and output documentation.
-
-For independent Stata review, use the `stata_reviewer` subagent. The reviewer reads `.codex/agents/references/stata-review-protocol.md`. Stata review is not a skill. The Stata producer skill may request review, but it does not review itself independently. If the main agent applies the Stata review protocol itself, label that review non-independent. Use `verifier` when authorized and available for output freshness, reproducibility, and evidence checks. Before claiming completion, apply the relevant score protocol or template when the task is substantial.
-
-Do not claim that a skill or subagent was used unless it actually was. Distinguish direct execution evidence from inference, and clearly report blockers, remaining risks, and any below-threshold override needed.
+For independent Stata review, use stata_reviewer. Use verifier for output freshness and reproducibility
+evidence when available. Apply the relevant score protocol or template before claiming substantial work is
+complete.
 ```
 
-### Full Quantitative / MATLAB Workflow
+## MATLAB Workflow Prompt
 
 ```text
 Please run the full quantitative MATLAB workflow for this task.
 
-Follow the repository loop:
+Use matlab-model-planner for design and challenge mapping. Use matlab-model-builder for coherent whole-model
+construction or revision with proportionate probes, targeted high-risk checks, and integration/sanity checks.
 
-PRE-EXPLORE -> PLAN -> IMPLEMENT -> VERIFY -> REVIEW -> FIX -> RE-VERIFY -> SCORE -> SUMMARIZE
-
-Use `matlab-quantitative-modeling` only as a compatibility entrypoint if named. Use `matlab-model-planner` for design and challenge mapping. Use `matlab-model-builder` for coherent whole-model construction or revision.
-
-Inside the builder workflow, Codex should use proportionate validation: cheap probes and targeted checks for high-risk/result-critical components during construction, with broader validation deferred to verifier/reviewer/full workflow mode when appropriate.
-
-Use `matlab_reviewer` for independent MATLAB code, numerical, performance, reproducibility, and model-consistency review. Use `critical_reviewer` only when a broader adversarial perspective is useful. Use `verifier` for execution evidence and freshness checks. Score only after evidence, review, and verification when substantial.
-
-Do not change model timing, equations, constraints, calibration targets, moments, simulation logic, or output interpretation silently. Distinguish direct execution evidence from inference, and clearly report blockers, remaining risks, and any below-threshold override needed.
+Use matlab_reviewer for independent MATLAB code, numerical, performance, reproducibility, and
+model-consistency review. Use verifier for execution and output freshness evidence when available. Score only
+after evidence, review, and verification when substantial.
 ```
 
-### Lightweight Inspection Or Planning Workflow
+## Lightweight Prompt
 
 ```text
-Please do a lightweight pass only. Inspect, plan, or summarize the relevant project context without running the full verify-review-score loop unless I explicitly request it.
+Please do a lightweight pass only. Inspect, plan, or summarize the relevant project context without running
+the full verify-review-score loop unless I explicitly request it.
 
-State what you inspected, what you inferred, what remains unknown, and what next full-workflow step would be needed before implementation or completion claims.
+State what you inspected, what you inferred, what remains unknown, and what full-workflow step would be needed
+before implementation or completion claims.
 ```
-
-## Included Skills
-
-Reusable skills may be added under `.agents/skills/` when a project has a recurring need. Current skills include:
-
-- `research-project-onboarding`: existing-project onboarding and scaffold integration.
-- `stata-data-prep-exploration`: Stata data orientation, missingness, keys, merges, and minimal cleaning plans.
-- `empirical-analysis-planner`: empirical strategy planning from available project and data evidence.
-- `stata-data-analysis`: Stata producer skill for empirical analysis code, diagnostics, logs, tables, figures, and output manifests.
-- `matlab-model-planner`: MATLAB quantitative model design, diagnosis, and implementation planning.
-- `matlab-model-builder`: MATLAB whole-model construction and revision with proportionate validation, probes, integration checks, and speed/memory discipline.
-- `matlab-model-implementation`: legacy compatibility pointer to the planner and builder.
-- `matlab-quantitative-modeling`: broad compatibility pointer to the current MATLAB workflow.
-
-## Reviewer Routing
-
-- Stata review is performed by `.codex/agents/stata_reviewer.toml`.
-- `stata_reviewer` reads `.codex/agents/references/stata-review-protocol.md`.
-- Stata review is not a skill.
-- The Stata producer skill may request review, but does not review itself independently.
-- The `verifier` subagent handles output, log, freshness, and reproducibility evidence when available.
-- Review does not replace verification. Review does not replace scoring.
-- Subagent review is cost-aware: use the narrowest useful reviewer and avoid unnecessary parallel review.
-
-## MATLAB Workflow
-
-- Use `matlab-model-planner` for design and challenge mapping before implementation.
-- Use `matlab-model-builder` for coherent whole-model construction.
-- Inside `matlab-model-builder`, use cheap construction-time probes and targeted checks where risk justifies them; defer broader validation to `verifier`, `matlab_reviewer`, or full workflow mode.
-- Use `matlab_reviewer` for independent MATLAB code, numerical, performance, reproducibility, and model-consistency review.
-- Use `critical_reviewer` for broader economic-model or research-claim review when useful, not by default.
-- Use `verifier` for execution/output freshness evidence.
-- Score only after evidence, review, and verification when substantial.
 
 ## Copying This Scaffold
 
-To use this scaffold in another research project, choose the path that matches the target:
+For a target project that already contains this scaffold, run onboarding to create or reconcile
+project-specific `AGENTS.md`, `PROJECT_PROFILE.md`, and `PROJECT_STATE.md`.
 
-- For a project where this scaffold is already present, use Case A onboarding to generate or reconcile project-specific `AGENTS.md`, `PROJECT_PROFILE.md`, and `PROJECT_STATE.md`.
-- For an old or ongoing project where this scaffold is not yet present, use Case B scaffold integration. Provide a local scaffold path or GitHub URL, then have Codex propose a safe import/adaptation plan before any files are copied or changed.
-
-Keep shared workflow protocols stable unless the project has a clear reason to specialize them.
+For an older project without this scaffold, provide the scaffold source path or URL and ask Codex to propose
+a safe import plan before copying files or changing existing guidance.

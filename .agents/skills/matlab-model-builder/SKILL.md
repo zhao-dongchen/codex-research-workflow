@@ -44,7 +44,7 @@ Review/verification-time checks include broader reruns, output freshness verific
 
 ## Probes Are Allowed
 
-Codex may quickly probe components before finalizing code. Useful probes include tiny-grid tests, boundary cases, parameter perturbations, sparse/dense comparisons, loop/vectorized comparisons, mass-conservation checks, stochastic-matrix convention checks, policy-bound checks, convergence/residual checks, moment-direction checks, timings, and memory-footprint checks. Do not create large test suites unless the user requests them or the component has high result risk.
+Codex may quickly probe components before finalizing code. Use small, cheap probes to test dimensions, boundaries, stochastic conventions, mass conservation, policy bounds, residuals, moment direction, timing, or memory risk when those checks are likely to change the implementation decision. Do not create large test suites unless the user requests them or the component has high result risk.
 
 If a probe informs an implementation decision, summarize or save the evidence. If a probe reveals a bug or ambiguity, fix it or record the unresolved issue before continuing.
 
