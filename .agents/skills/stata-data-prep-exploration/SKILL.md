@@ -1,13 +1,16 @@
 ---
 name: stata-data-prep-exploration
-description: "Use when the user wants to understand, inspect, clean, merge, or explore raw or partially processed data for a Stata-based empirical project before formal analysis. Produces data orientation, variable/unit/missingness/coverage diagnostics, merge diagnosis, minimal cleaning plans, and optional clean-data do-files."
+description: "Inspect and prepare Stata data structure, keys, missingness, merges, and cleaning plans."
 ---
 
 # Stata Data Prep And Exploration
 
-Use this skill when Codex should understand raw or partially processed Stata data before formal analysis: structure, unit of observation, identifiers, time coverage, variable meaning, missingness, merge feasibility, and minimal cleaning needs.
+Use this skill when Codex should understand raw or partially processed Stata data before formal analysis:
+structure, unit of observation, identifiers, time coverage, variable meaning, missingness, merge feasibility,
+and minimal cleaning needs.
 
-This skill prepares the ground for analysis. It is not the main workflow for final regressions, paper-ready outputs, independent review, or claim validation.
+This skill prepares the ground for analysis. It is not the main workflow for final regressions, paper-ready
+outputs, independent review, or claim validation.
 
 ## Deliverables
 
@@ -23,7 +26,8 @@ Depending on scope, produce:
 - clean-data do-file or output manifest, only when requested or approved
 - unresolved data questions
 
-For detailed standards, read `references/stata-data-prep-standards.md` when the task involves substantial data orientation, cleaning, missingness, sample construction, or merges.
+For detailed standards, read `references/stata-data-prep-standards.md` when the task involves substantial
+data orientation, cleaning, missingness, sample construction, or merges.
 
 ## Workflow
 
@@ -40,10 +44,12 @@ For detailed standards, read `references/stata-data-prep-standards.md` when the 
 
 ## Data And Code Rules
 
-- Do not copy restricted, proprietary, licensed, confidential, or human-subject data into the repo unless explicitly permitted.
+- Do not copy restricted, proprietary, licensed, confidential, or human-subject data into the repo unless
+  explicitly permitted.
 - Request permission before reading outside the workspace when required.
 - Do not overwrite raw data.
-- Start from the broadest defensible dataset and separate raw universe, usable observations, cleaned sample, and analysis-specific sample.
+- Start from the broadest defensible dataset and separate raw universe, usable observations, cleaned sample,
+  and analysis-specific sample.
 - Explain restrictions, merge choices, and variable constructions when they affect interpretation.
 - Use logs for substantive diagnostics when running Stata.
 - Preserve existing project style where possible.
@@ -52,12 +58,15 @@ For detailed standards, read `references/stata-data-prep-standards.md` when the 
 
 - Use `empirical-analysis-planner` to choose empirical strategy.
 - Use `stata-data-analysis` for formal Stata implementation, regressions, tables, figures, and output generation.
-- Use `stata_reviewer` for independent Stata pipeline review when authorized and available; it applies `.codex/agents/references/stata-review-protocol.md`.
+- Use `stata_reviewer` for independent Stata pipeline review when authorized and available; it applies
+  `.codex/agents/references/stata-review-protocol.md`.
 - Use `verifier` for generated files, logs, outputs, and freshness claims when available.
 - Use `critical_reviewer` for independent argument or claim review when useful.
 
-If the main agent applies a review checklist itself, label that review non-independent. Review does not replace verification or scoring.
+If the main agent applies a review checklist itself, label that review non-independent. Review does not
+replace verification or scoring.
 
 ## Final Response Standard
 
-End substantial tasks with what was directly inspected, what was inferred, what data issues were found, what files were created, what remains unverified, and the next empirical step.
+End substantial tasks with what was directly inspected, what was inferred, what data issues were found, what
+files were created, what remains unverified, and the next empirical step.

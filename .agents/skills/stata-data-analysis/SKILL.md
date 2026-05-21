@@ -1,13 +1,15 @@
 ---
 name: stata-data-analysis
-description: "Use for producing empirical Stata work after data structure and analysis goals are sufficiently defined: write or revise .do files, implement data construction, run regressions, produce tables or figures, document outputs, and perform basic self-checks before handoff. This is a producer skill, not an independent reviewer."
+description: "Produce empirical Stata code, diagnostics, logs, tables, figures, and output manifests."
 ---
 
 # Stata Data Analysis
 
 Use this skill when the user wants Codex to produce or modify empirical Stata work.
 
-This is a producer skill. It is for writing, revising, and running analysis code, not for independent audit. If the data are not yet understood, use `stata-data-prep-exploration` first. If the empirical design is not settled, use `empirical-analysis-planner` first.
+This is a producer skill. It is for writing, revising, and running analysis code, not for independent audit.
+If the data are not yet understood, use `stata-data-prep-exploration` first. If the empirical design is not
+settled, use `empirical-analysis-planner` first.
 
 ## Producer Deliverables
 
@@ -33,7 +35,8 @@ For substantial Stata production tasks:
 3. Confirm the empirical goal, data access status, output paths, and reproducibility target.
 4. Identify the broadest defensible baseline sample and required restrictions.
 5. Map requested concepts to variables, units, and transformations.
-6. Write or revise readable Stata code for data construction, regressions, tables, figures, logs, and output documentation.
+6. Write or revise readable Stata code for data construction, regressions, tables, figures, logs, and output
+   documentation.
 7. Run Stata code where execution is available, or provide exact commands when execution is not available.
 8. Perform basic self-checks before handoff.
 9. In full workflow mode, request independent review and verification rather than relying on this skill's self-check.
@@ -84,7 +87,10 @@ Before presenting producer work as ready for review, check:
 - key variables have plausible ranges, units, and missingness
 - tables and figures are either freshness-verified or explicitly marked `not freshness-verified`
 
-This self-check is not independent review. In full workflow mode, use `stata-data-analysis` for implementation, use the `stata_reviewer` subagent for independent Stata review when authorized and available, and use `verifier` when authorized and available for output freshness, reproducibility, and evidence checks. The Stata reviewer applies `.codex/agents/references/stata-review-protocol.md`. Review does not replace verification or scoring.
+This self-check is not independent review. In full workflow mode, use `stata-data-analysis` for implementation
+and `stata_reviewer` for independent Stata review when authorized and available. Use `verifier` for output
+freshness, reproducibility, and evidence checks. The Stata reviewer applies
+`.codex/agents/references/stata-review-protocol.md`. Review does not replace verification or scoring.
 
 ## Boundaries
 
@@ -100,7 +106,9 @@ Use `stata-data-prep-exploration` for raw data understanding and cleaning plans.
 
 Use `empirical-analysis-planner` for analysis design.
 
-Use the `stata_reviewer` subagent for independent Stata review. If the main agent applies `.codex/agents/references/stata-review-protocol.md` itself, label that review non-independent. Review does not replace verification or scoring.
+Use the `stata_reviewer` subagent for independent Stata review. If the main agent applies
+`.codex/agents/references/stata-review-protocol.md` itself, label that review non-independent. Review does
+not replace verification or scoring.
 
 Use `verifier` for independent output, log, freshness, and reproducibility checks.
 
