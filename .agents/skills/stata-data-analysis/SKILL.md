@@ -28,7 +28,7 @@ Depending on scope, produce:
 
 For substantial Stata production tasks:
 
-1. Read `AGENTS.md`, `PROJECT_STATE.md`, and relevant workflow protocols.
+1. Read `AGENTS.md`, `PROJECT_STATE.md`, and any task-relevant local references.
 2. Inspect existing do-files, logs, data references, metadata, codebooks, tables, and figures.
 3. Confirm the empirical goal, data access status, output paths, and reproducibility target.
 4. Identify the broadest defensible baseline sample and required restrictions.
@@ -84,7 +84,7 @@ Before presenting producer work as ready for review, check:
 - key variables have plausible ranges, units, and missingness
 - tables and figures are either freshness-verified or explicitly marked `not freshness-verified`
 
-This self-check is not independent review. In full workflow mode, use `review-stata` as the review rubric, use `stata_reviewer` when authorized and available for independent Stata review, and use `verifier` when authorized and available for output freshness, reproducibility, and evidence checks.
+This self-check is not independent review. In full workflow mode, use `stata-data-analysis` for implementation, use the `stata_reviewer` subagent for independent Stata review when authorized and available, and use `verifier` when authorized and available for output freshness, reproducibility, and evidence checks. The Stata reviewer applies `.codex/agents/references/stata-review-protocol.md`.
 
 ## Boundaries
 
@@ -100,7 +100,7 @@ Use `stata-data-prep-exploration` for raw data understanding and cleaning plans.
 
 Use `empirical-analysis-planner` for analysis design.
 
-Use `review-stata` and `stata_reviewer` for review.
+Use the `stata_reviewer` subagent for independent Stata review. If the main agent applies `.codex/agents/references/stata-review-protocol.md` itself, label that review non-independent.
 
 Use `verifier` for independent output, log, freshness, and reproducibility checks.
 

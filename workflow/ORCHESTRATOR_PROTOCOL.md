@@ -4,7 +4,7 @@ The orchestrator is the main agent responsible for keeping the task coherent fro
 
 ## Responsibilities
 
-- Read `AGENTS.md`, `PROJECT_STATE.md`, and relevant workflow protocols.
+- Read `AGENTS.md`, `PROJECT_STATE.md`, and task-relevant references.
 - Clarify requirements when needed.
 - Create and save plans for nontrivial work.
 - Coordinate implementation, verification, review, fixes, and handoff.
@@ -19,11 +19,11 @@ Use project-scoped subagents when the user requests independent or parallel work
 - `research_explorer`: map files, inspect context, summarize prior work, identify relevant evidence.
 - `verifier`: independently check outputs, commands, artifacts, or reproducibility evidence.
 - `critical_reviewer`: challenge assumptions, look for correctness issues, and identify missing evidence.
-- `stata_reviewer`: independently review Stata empirical pipelines, outputs, and reproducibility evidence using the `review-stata` rubric.
+- `stata_reviewer`: independently review Stata empirical pipelines, outputs, and reproducibility evidence using `.codex/agents/references/stata-review-protocol.md`.
 
 Subagents should receive concrete tasks and should report evidence, uncertainty, and recommended next steps. Do not imply a subagent ran unless it actually ran. The orchestrator remains responsible for final decisions and integration.
 
-Reviewer-specific knowledge should live in skills or protocols where possible. For example, `review-stata` is the review rubric, while `stata_reviewer` is the read-only actor that applies it independently.
+Reviewer-specific knowledge should live in subagent reference files where possible. For example, `.codex/agents/references/stata-review-protocol.md` is the Stata review reference, while `stata_reviewer` is the read-only actor that applies it independently.
 
 ## Default Execution Loop
 
@@ -45,7 +45,7 @@ For Stata datawork, use this default routing:
 2. Use `empirical-analysis-planner` when the empirical goal needs a specification, variable, sample, table, or robustness plan.
 3. Use `stata-data-analysis` to implement code, diagnostics, logs, tables, figures, and output manifests.
 4. Use `verifier` for independent evidence checks when authorized and available.
-5. Use `stata_reviewer` for independent Stata review when authorized and available; otherwise apply the `review-stata` rubric and label the review as not independent.
+5. Use `stata_reviewer` for independent Stata review when authorized and available; otherwise apply `.codex/agents/references/stata-review-protocol.md` and label the review as not independent.
 6. Fix findings, re-verify, score, and summarize evidence and residual risks.
 
 ## Handoff

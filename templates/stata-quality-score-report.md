@@ -35,7 +35,8 @@ State the empirical task, data inputs, analysis goal, and whether full workflow 
 ## Review Evidence
 
 - Independent reviewer/subagent used:
-- `review-stata` rubric used: yes/no
+- Stata review protocol reference used: yes/no (`.codex/agents/references/stata-review-protocol.md`)
+- Review independence: independent / non-independent / not performed
 - Findings resolved:
 - Findings accepted as residual risk:
 - Review not performed because:

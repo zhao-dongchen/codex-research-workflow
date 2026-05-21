@@ -11,11 +11,12 @@ The scaffold is designed to be copied into empirical or quantitative research pr
 ## Current Scaffold Status
 
 - Main constitution: `AGENTS.md`.
-- Workflow protocols: `workflow/`.
+- Shared protocol/reference library: `workflow/`.
 - Reusable templates: `templates/`.
 - Durable reports: `quality_reports/`.
 - Repo-scoped skills: `.agents/skills/`.
 - Read-only project subagents: `.codex/agents/`.
+- Subagent references: `.codex/agents/references/`.
 - Detailed hardening history: `quality_reports/session_logs/scaffold-hardening-log.md`.
 
 No active implementation plan is currently recorded.
@@ -42,7 +43,6 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 - `stata-data-prep-exploration`: inspect raw or partially processed Stata data, sample construction, keys, merges, missingness, and cleaning needs.
 - `empirical-analysis-planner`: map research questions to empirical strategy, variables, samples, specifications, tables, figures, and robustness checks.
 - `stata-data-analysis`: produce Stata do-files, data construction, regressions, tables, figures, logs, and output documentation.
-- `review-stata`: Stata review rubric for empirical pipelines, outputs, and reproducibility.
 - `matlab-model-implementation`: implement or revise MATLAB quantitative economic model code.
 - `review-matlab-model`: read-only MATLAB model review rubric.
 - `matlab-quantitative-modeling`: temporary compatibility pointer to MATLAB producer/reviewer skills.
@@ -52,9 +52,9 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 - `research_explorer`: read-only context mapping and repository inspection.
 - `verifier`: read-only evidence, output, command, and reproducibility checks.
 - `critical_reviewer`: read-only adversarial review of plans, code, outputs, reasoning, and handoff quality.
-- `stata_reviewer`: read-only independent Stata review using the `review-stata` rubric.
+- `stata_reviewer`: independent read-only Stata reviewer subagent.
 
-Subagents should only be claimed when actually used.
+`stata_reviewer` applies `.codex/agents/references/stata-review-protocol.md`. Subagents should only be claimed when actually used. If the main agent applies the Stata review protocol itself, label the review non-independent.
 
 ## Current Quality Gates
 
@@ -64,6 +64,7 @@ Subagents should only be claimed when actually used.
 - Independent review for substantial work when requested or runtime-authorized.
 - Quality scoring for full workflow mode and substantial research-code or research-output tasks.
 - In full workflow mode, SCORE is required before SUMMARIZE.
+- `workflow/` is a shared protocol/reference library, not automatic rules.
 - Score thresholds from `workflow/QUALITY_SCORE_PROTOCOL.md`:
   - `<70`: do not present as complete.
   - `70-79`: partial; needs user review.
@@ -81,12 +82,9 @@ Subagents should only be claimed when actually used.
 
 ## Last Verified State
 
-2026-05-20 structural cleanup:
+2026-05-20 Codex-native architecture cleanup:
 
-- `AGENTS.md`, `README.md`, workflow protocols, skills, score templates, and project state were aligned around the full workflow including SCORE.
-- `workflow/QUALITY_SCORE_PROTOCOL.md` was adapted from the upstream Claude quality-gate model into Codex-native Stata/MATLAB research workflow language.
-- `templates/quality-score-report.md`, `templates/stata-quality-score-report.md`, and `templates/matlab-quality-score-report.md` exist.
-- `stata-data-analysis` is producer-oriented; independent review belongs to `review-stata`, `stata_reviewer`, `review-matlab-model`, `critical_reviewer`, and `verifier` as appropriate.
-- Historical scaffold-hardening details were moved to `quality_reports/session_logs/scaffold-hardening-log.md`.
-- Current cleanup score report: `quality_reports/scores/2026-05-20-claude-quality-score-sync.md` with score `93`.
-- Final structural hardening score report: `quality_reports/scores/2026-05-20-final-structural-hardening.md` with score `94`.
+- `AGENTS.md` is now a short top-level constitution.
+- Stata review is routed to `stata_reviewer`, with checklist/reference material in `.codex/agents/references/stata-review-protocol.md`.
+- `workflow/` is described as a shared protocol/reference library, not an automatic rule mechanism.
+- The former Stata review skill was removed from the active skill inventory.

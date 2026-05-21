@@ -209,7 +209,7 @@ Use `stata-data-prep-exploration` for raw data understanding and cleaning.
 
 Use `stata-data-analysis` to implement empirical analysis in Stata.
 
-Use `review-stata` as the Stata review rubric, preferably through the `stata_reviewer` subagent when independent review is authorized and available.
+Use the `stata_reviewer` subagent for independent Stata review when authorized and available. The Stata reviewer applies `.codex/agents/references/stata-review-protocol.md`. If the main agent applies that checklist itself, label the review non-independent.
 
 Use `verifier` to check files, logs, output existence, and freshness when an independent verification actor is available.
 

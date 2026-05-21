@@ -268,7 +268,7 @@ Do not use this skill as the main tool for:
 
 For formal Stata analysis, use `stata-data-analysis`.
 
-For read-only Stata code or pipeline review, use `review-stata` as the rubric, preferably through the `stata_reviewer` subagent when authorized and available.
+For read-only Stata code or pipeline review, use the `stata_reviewer` subagent when authorized and available. The Stata reviewer applies `.codex/agents/references/stata-review-protocol.md`. If the main agent applies that checklist itself, label the review non-independent.
 
 For deciding what empirical strategy to pursue, use `empirical-analysis-planner`.
 
