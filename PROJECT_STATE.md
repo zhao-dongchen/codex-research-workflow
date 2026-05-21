@@ -80,7 +80,7 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 ## Open Issues / Next Actions
 
 - Test the full empirical workflow on a larger real or representative Stata task.
-- Test the full MATLAB workflow on a small model-code change or dry-run review.
+- Test the full MATLAB workflow on a larger real or representative model-code task.
 - Decide later whether `matlab-quantitative-modeling` should remain as a compatibility pointer or be removed.
 - Do not add hooks or new agents until the manual Codex-native workflow has been exercised.
 
@@ -101,3 +101,8 @@ Lightweight inspection or planning may skip implementation, review, and scoring 
 
 - MATLAB workflow now uses `matlab-model-planner` for design/planning and `matlab-model-builder` for coherent whole-model construction with adaptive high-risk component validation and probes.
 - MATLAB review is routed to `matlab_reviewer` using `.codex/agents/references/matlab-review-protocol.md`; the obsolete MATLAB review procedure was removed from the active skill inventory.
+
+2026-05-21 MATLAB workflow smoke test:
+
+- A toy off-grid transition-matrix and distribution-update MATLAB smoke test passed under `quality_reports/session_logs/matlab_workflow_test/`.
+- Final score report: `quality_reports/scores/2026-05-21-matlab-workflow-smoke-test.md` with score `94`.
