@@ -82,8 +82,8 @@ Score thresholds from `workflow/QUALITY_SCORE_PROTOCOL.md`:
 
 - 2026-05-20: Stata review was routed to `stata_reviewer`; the obsolete Stata review procedure was removed
   from active skills.
-- 2026-05-20: Stata full-workflow smoke test passed; temporary toy artifacts were removed afterward.
+- 2026-05-20/21: Stata and MATLAB smoke tests passed during scaffold validation; temporary toy artifacts
+  were removed afterward.
 - 2026-05-21: MATLAB workflow was reorganized around `matlab-model-planner`, `matlab-model-builder`, and
   `matlab_reviewer`.
 - 2026-05-21: Subagent resource policy was added for proportionate review scope.
-- 2026-05-21: MATLAB toy transition-matrix smoke test passed; score report recorded `94`.

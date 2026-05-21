@@ -54,8 +54,9 @@ STALE_PATTERNS = [
     r"matlab-quantitative-modeling",
 ]
 
-TOP_LEVEL_DOCS = ["AGENTS.md", "README.md", "PROJECT_STATE.md"]
-MAX_TOP_LEVEL_LINE = 120
+ROOT_GUIDANCE_DOCS = ["AGENTS.md", "README.md", "PROJECT_STATE.md"]
+MAX_ROOT_GUIDANCE_LINE = 120
+MAX_ACTIVE_INSTRUCTION_LINE = 160
 
 
 def rel(path: pathlib.Path) -> str:
@@ -66,9 +67,28 @@ def fail(errors: list[str], message: str) -> None:
     errors.append(message)
 
 
-def parse_simple_yaml_front_matter(text: str) -> dict[str, str] | None:
-    match = re.match(r"---\n(.*?)\n---\n", text, re.S)
+def parse_simple_yaml_front_matter(
+    text: str, path: pathlib.Path, errors: list[str]
+) -> dict[str, str] | None:
+    lines = text.splitlines()
+    if not lines or lines[0] != "---":
+        fail(errors, f"{rel(path)} must start with a standalone YAML front matter delimiter")
+        return None
+
+    try:
+        closing_index = lines[1:].index("---") + 1
+    except ValueError:
+        fail(errors, f"{rel(path)} missing standalone YAML front matter closing delimiter")
+        return None
+
+    if closing_index < 2:
+        fail(errors, f"{rel(path)} front matter must include name and description lines")
+        return None
+
+    first_block = "\n".join(lines[: closing_index + 1]) + "\n"
+    match = re.match(r"---\n(.*?)\n---\n", first_block, re.S)
     if not match:
+        fail(errors, f"{rel(path)} malformed YAML front matter")
         return None
 
     data: dict[str, str] = {}
@@ -87,9 +107,8 @@ def check_skill_front_matter(errors: list[str]) -> set[str]:
     names: set[str] = set()
 
     for path in skill_files:
-        data = parse_simple_yaml_front_matter(path.read_text())
+        data = parse_simple_yaml_front_matter(path.read_text(), path, errors)
         if data is None:
-            fail(errors, f"{rel(path)} missing YAML front matter")
             continue
         for key in ("name", "description"):
             if not data.get(key):
@@ -164,12 +183,24 @@ def check_inventory(errors: list[str], skills: set[str], subagents: set[str]) ->
         )
 
 
-def check_top_level_line_lengths(errors: list[str]) -> None:
-    for name in TOP_LEVEL_DOCS:
+def check_line_lengths(errors: list[str]) -> None:
+    for name in ROOT_GUIDANCE_DOCS:
         path = ROOT / name
         for line_number, line in enumerate(path.read_text().splitlines(), 1):
-            if len(line) > MAX_TOP_LEVEL_LINE:
-                fail(errors, f"{name}:{line_number} exceeds {MAX_TOP_LEVEL_LINE} chars")
+            if len(line) > MAX_ROOT_GUIDANCE_LINE:
+                fail(errors, f"{name}:{line_number} exceeds {MAX_ROOT_GUIDANCE_LINE} chars")
+
+    active_instruction_files = [
+        *sorted((ROOT / ".agents/skills").glob("*/SKILL.md")),
+        *sorted((ROOT / ".codex/agents").glob("*.toml")),
+    ]
+    for path in active_instruction_files:
+        for line_number, line in enumerate(path.read_text().splitlines(), 1):
+            if len(line) > MAX_ACTIVE_INSTRUCTION_LINE:
+                fail(
+                    errors,
+                    f"{rel(path)}:{line_number} exceeds {MAX_ACTIVE_INSTRUCTION_LINE} chars",
+                )
 
 
 def main() -> int:
@@ -180,7 +211,7 @@ def main() -> int:
     check_removed_dirs(errors)
     check_stale_references(errors)
     check_inventory(errors, skills, subagents)
-    check_top_level_line_lengths(errors)
+    check_line_lengths(errors)
 
     if errors:
         print("Scaffold health check failed:")
